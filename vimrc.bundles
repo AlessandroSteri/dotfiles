@@ -1,0 +1,86 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Define bundles via Github repos
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-projectionist'
+" Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'blarghmatey/split-expander'
+" Plugin 'ngmy/vim-rubocop'
+" Plugin 'rking/ag.vim'
+Plugin 'sjl/vitality.vim'
+Plugin 'kien/ctrlp.vim'
+" Plugin 'janko-m/vim-test'
+" Plugin 'tpope/vim-bundler'
+" Plugin 'ecomba/vim-ruby-refactoring'
+" Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-surround'
+" Plugin 'tmhedberg/matchit'
+" Plugin 'kana/vim-textobj-user'
+" Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'vim-scripts/tComment'
+Plugin 'scrooloose/nerdtree'
+" Plugin 'MarcWeber/vim-addon-mw-utils'
+" Plugin 'tomtom/tlib_vim'
+Plugin 'skwp/greplace.vim'
+" Plugin 'vim-ruby/vim-ruby'
+" Plugin 'elixir-lang/vim-elixir'
+" Plugin 'scrooloose/syntastic'
+" Plugin 'tpope/vim-haml'
+"Plugin 'dkprice/vim-easygre'
+" Plugin 'tpope/vim-rails'
+Plugin 'frankier/neovim-colors-solarized-truecolor-only'
+" Plugin 'myusuf3/numbers.vim'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'jgdavey/tslime.vim'
+" Plugin 'henrik/vim-qargs'
+Plugin 'pangloss/vim-javascript'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'jsx/jsx.vim'
+Plugin 'terryma/vim-expand-region'
+Plugin 'avdgaag/vim-phoenix'
+Plugin 'vim-scripts/PatternsOnText'
+Plugin 'yegappan/mru'
+Plugin 'lervag/vimtex'
+Plugin 'w0rp/ale'
+Plugin 'majutsushi/tagbar'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'mhinz/vim-startify'
+"A Vim Plugin for Lively Previewing LaTeX PDF Output
+" Plugin 'xuhdev/vim-latex-live-preview'
+
+" Plugin 'vim-scripts/Conque-GDB' "gdb debugger for vim
+
+"Plugin 'scrooloose/nerdcommenter' "comments
+
+Plugin 'Valloric/YouCompleteMe'
+" Plugin 'nvie/vim-flake8'
+" Plugin 'chrisbra/csv.vim'
+Plugin 'junegunn/goyo.vim'
+Plugin 'mbbill/undotree'
+Bundle('https://alessandrosteri@bitbucket.org/mclab/vim-properties-syntax.git')
+" Bundle 'mattn/webapi-vim'
+" Bundle 'mattn/gist-vim'
+Plugin 'jiangmiao/auto-pairs'
+" Plugin 'tell-k/vim-autopep8'
+" Plugin 'nelstrom/vim-visual-star-search'
+" Plugin 'tell-k/vim-autopep8'
+Plugin 'klen/python-mode'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
+Plugin 'mkitt/tabline.vim'
+Plugin 'flazz/vim-colorschemes'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
