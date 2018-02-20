@@ -48,6 +48,7 @@ set autoread
 " like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
+let maplocalleader = ","
 
 " Allow to use mouse on vim
 if has('mouse')
@@ -203,8 +204,10 @@ if $COLORTERM == 'gnome-terminal'
     set t_Co=256
 endif
 
+highlight LineNr ctermfg=grey
 try
-    colorscheme solarized
+    let g:solarized_termtrans = 1
+    colorscheme solarized8
 catch
 endtry
 
