@@ -208,6 +208,7 @@ highlight LineNr ctermfg=grey
 try
     let g:solarized_termtrans = 1
     colorscheme solarized
+    " colorscheme gruvbox
 catch
 endtry
 
@@ -371,7 +372,7 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
-let g:airline_theme='solarized'
+" let g:airline_theme='solarized'
 " Enable w0rp/ale extension for airline
 let g:airline#extensions#ale#enabled = 1
 

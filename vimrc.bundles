@@ -83,6 +83,7 @@ Plugin 'mkitt/tabline.vim'
 " Plugin 'flazz/vim-colorschemes'
 Plugin 'lifepillar/vim-solarized8'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'morhetz/gruvbox'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
