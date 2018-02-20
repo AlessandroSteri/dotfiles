@@ -1,0 +1,50 @@
+# Compiled source #
+###################
+*.pyc
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Temporary files and tags#
+###################
+*.swp
+*.swo
+*~
+tmp/**/*
+!tmp/cache/.keep
+tags
+
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+.bundle
+
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+log/*.log
+db/*.sqlite3
+
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+*.lock
+package-lock.json
