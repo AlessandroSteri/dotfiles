@@ -1,158 +1,120 @@
 #Exit immediately if a command exits with a non-zero status.
 set -e 
 
-echo "[Xcode Command Line Tools]"
-echo "[Xcode Command Line Tools] installing..."
-xcode-select --install
-echo "[Xcode Command Line Tools] installed."
-echo "[Xcode Command Line Tools] done."
+echo -n "[Xcode Command Line Tools] installing..."
+xcode-select --install && echo "installed: ✓"
 
-echo "[HOMEBREW]"
-echo "[HOMEBREW] installing..."
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-echo "[HOMEBREW] installed."
-echo "[HOMEBREW] done."
+echo -n "[HOMEBREW] installing..."
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" && echo "installed: ✓"
 
-echo "[HOMEBREW][Python2]"
-echo "[HOMEBREW][Python2] installing..."
-brew install python
-echo "[HOMEBREW][Python2] installed."
-echo "[HOMEBREW][Python2] done."
+echo -n "[HOMEBREW][Python2] installing..."
+brew install python && echo "installed: ✓"
 
-echo "[HOMEBREW][cmake]"
-echo "[HOMEBREW][cmake] installing..."
-brew install cmake
-echo "[HOMEBREW][cmake] installed."
-echo "[HOMEBREW][cmake] done."
+echo -n "[HOMEBREW][cmake] installing..."
+brew install cmake && echo "installed: ✓"
 
-echo "[HOMEBREW][Python3]"
-echo "[HOMEBREW][Python3] installing..."
-brew install python3
-echo "[HOMEBREW][Python3] installed."
-echo "[HOMEBREW][Python3] done."
+echo -n "[HOMEBREW][Python3] installing..."
+brew install python3 && echo "installed: ✓"
 
-echo "[GIT]"
-echo "[GIT] installing..."
-brew install git
-echo "[GIT] installed."
-echo "[GIT] done."
+echo -n "[GIT] installing..."
+brew install git && echo "installed: ✓"
 
-echo "[ITERM2]"
-echo "[ITERM2] installing..."
-brew cask install iterm2
-echo "[ITERM2] installed."
-echo "[ITERM2] done."
+echo -n "[ITERM2] installing..."
+brew cask install iterm2 && echo "installed: ✓"
 
-echo "[ITERM2][Oh My Zsh]"
-echo "[ITERM2][Oh My Zsh] installing..."
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-echo "[Oh My Zsh] installed."
-echo "[ITERM2][Oh My Zsh] done."
+echo -n "[ITERM2][Oh My Zsh] installing..."
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" && echo "installed: ✓"
 
-echo "[ITERM2][Oh My Zsh][powerlevel9k]"
-echo "[ITERM2][Oh My Zsh][powerlevel9k] installing..."
-git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
-echo "[ITERM2][Oh My Zsh][powerlevel9k] done."
+echo -n "[ITERM2][Oh My Zsh][powerlevel9k] installing..."
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k && echo "installed: ✓"
 
-echo "[ITERM2][Oh My Zsh][powerlevel9k][nerdfont]"
-echo "[ITERM2][Oh My Zsh][powerlevel9k][nerdfont] installing..."
+echo -n "[ITERM2][Oh My Zsh][powerlevel9k][nerdfont] installing..."
 brew tap caskroom/fonts
-brew cask install font-hack-nerd-font
-echo "[ITERM2][Oh My Zsh][powerlevel9k][nerdfont] done."
+brew cask install font-hack-nerd-font && echo "installed: ✓"
 
-echo "[ITERM2][Oh My Zsh][zsh-autosuggestions]"
-echo "[ITERM2][Oh My Zsh][zsh-autosuggestions] installing..."
-git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-echo "[ITERM2][Oh My Zsh][zsh-autosuggestions] done."
+echo -n "[ITERM2][Oh My Zsh][zsh-autosuggestions] installing..."
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions && echo "installed: ✓ [Not active in default zshrc]"
 
-echo "[ITERM2][Oh My Zsh][syntax-highlighting]"
-echo "[ITERM2][Oh My Zsh][syntax-highlighting] installing..."
-brew install zsh-syntax-highlighting
-echo "[ITERM2][Oh My Zsh][syntax-highlighting] done."
+echo -n "[ITERM2][Oh My Zsh][syntax-highlighting] installing..."
+brew install zsh-syntax-highlighting && echo "installed: ✓"
 
-echo "must backup existing dotfiles"
+echo "must backup existing dotfiles, git clone and install new dotfiles"
 echo "must do the rcm thing so to have .dotfiles folder for spotifycontrol"
 
-echo "spotify app"
-brew cask install spotify
+echo -n "[Dotfiles][rcm] installing..."
+brew tap thoughtbot/formulae
+brew install rcm && echo "installed: ✓"
 
-echo "[ITERM2][SpotifyControl]"
-echo "[ITERM2][SpotifyControl] installing..."
+echo -n "[Dotfiles][MyGitHub] cloning..."
+git clone https://github.com/AlessandroSteri/dotfiles.git $HOME/.dotfiles && echo "cloned: ✓"
+
+echo -n "[Dotfiles][.Dotfiles] installing..."
+rcup -x install.sh && echo "installed: ✓"
+echo "==========================="
+echo "[Installed Dotfiles]:"
+lsrc -x install.sh
+echo "==========================="
+
+echo -n "[Spotify]"
+brew cask install spotify && echo "installed: ✓"
+
+echo -n "[Spotify][SpotifyControl] installing..."
 if [ ! -d $HOME/asDeveloper ]; then
-	echo "creating asDeveloper dir cause it doesen't exist"
+	#echo "creating asDeveloper dir cause it doesen't exist"
 	mkdir $HOME/asDeveloper
 fi
-echo "clone spotify control and link it so it works as a command in terminal"
+#echo "clone spotify control and link it so it works as a command in terminal"
 git clone https://github.com/dronir/SpotifyControl.git $HOME/asDeveloper/SpotifyControl
-ln -s $HOME/asDeveloper/SpotifyControl /usr/local/bin/spotify
-echo "[ITERM2][SpotifyControl] installed..."
+ln -s $HOME/asDeveloper/SpotifyControl /usr/local/bin/spotify && echo "installed: ✓"
 
 
-echo "[APPSTORE]"
-echo "[APPSTORE] installing mac app store cli interface..."
-brew install mas
-echo "[APPSTORE] installed mac app store cli interface..."
+echo -n "[APPSTORE cli-interface] installing..."
+brew install mas && echo "installed: ✓"
 
-echo "[APPSTORE][Xcode] installing Xcode...(must be installed before installing macvim"
-mas install 497799835
-echo "[APPSTORE][Xcode] installed Xcode."
+echo "[APPSTORE][Xcode] installing...(must be installed before installing macvim"
+mas install 497799835 && echo "[APPSTORE][Xcode] installed: ✓"
 
 echo "maybe you need to manually open xcode before enter the pasword"
-sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
-
+sudo xcode-select -s /Applications/Xcode.app/Contents/Developer && echo "xcode-select: ✓"
 
 #must be after xcode, i know linkapp is deprecated
-brew install macvim --override-system-vim
+echo -n "[macvim] installing..."
+brew install macvim --override-system-vim && echo "installed: ✓"
 #se non va perche deprecato prova: ln -s /usr/local/bin/mvim vim
-brew linkapps macvim
+brew linkapps macvim && echo "macvim linked: ✓"
 
 
-echo "[APPSTORE] installing Notability..."
-mas install 736189492
-echo "[APPSTORE] installed Notability."
+echo -n "[APPSTORE][Notability] installing ..."
+mas install 736189492 && echo "installed: ✓"
 
-echo "[APPSTORE] installing Bear..."
-mas install 1091189122
-echo "[APPSTORE] installed Bear."
-
-
-
+echo -n "[APPSTORE][Bear] installing..."
+mas install 1091189122 && echo "installed: ✓"
 
 echo "[APPSTORE] done."
 
 
-echo "[SYSTEM PREFERENCE]"
-echo "[SYSTEM PREFERENCE] changing scroll direction to not natural..." #needs log out for the change to take affect.
-defaults write ~/Library/Preferences/.GlobalPreferences com.apple.swipescrolldirection -bool false
-echo "[SYSTEM PREFERENCE] changed scroll direction to not natural." 
+echo -n "[SYSTEM PREFERENCE] changing scroll direction to not natural..." #needs log out for the change to take affect.
+defaults write ~/Library/Preferences/.GlobalPreferences com.apple.swipescrolldirection -bool false && echo "changed: ✓"
 
-echo "[SYSTEM PREFERENCE] setting keyboard speed and repeat to superhero..." #needs log out for the change to take affect.
-defaults write NSGlobalDomain KeyRepeat -float 1.3
-defaults write NSGlobalDomain InitialKeyRepeat -int 11
-echo "[SYSTEM PREFERENCE] set keyboard speed and repeat to superhero."
+echo -n "[SYSTEM PREFERENCE] setting keyboard speed and repeat to superhero..." #needs log out for the change to take affect.
+defaults write NSGlobalDomain KeyRepeat -float 1.3 && defaults write NSGlobalDomain InitialKeyRepeat -int 11 && && echo "changed: ✓"
 
-echo "[Dotfiles]"
-echo "[Dotfiles][rcm]"
-echo "[Dotfiles][rcm] installing..."
-brew tap thoughtbot/formulae
-brew install rcm
-echo "[Dotfiles][rcm] installed."
-echo "[Dotfiles][rcm] done."
+
 
 #!/bin/sh
 
 if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
-	echo "install vundle.."
-	git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+	echo -n "[Vundle] installing..."
+	git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim && echo "installed: ✓"
 	echo "installed"
 fi
-echo "youcompleteme stuff before install plugins"
-brew update
-brew cask install java
 
-#da capire come lanciare in modo non interattivo
-vim -u $HOME/.vimrc.bundles +PluginInstall +qall
+# brew update
+# brew cask install java 
 
+#da capire come lanciare in modo non interattivo e se funziona echo installed
+echo -n "[Vundle][PluginInstall] installing..."
+vim -u $HOME/.vimrc.bundles +PluginInstall +qall && echo "installed: ✓"
 ~/.vim/bundle/YouCompleteMe/install.py --clang-completer
 
 sleep 1
@@ -171,8 +133,13 @@ echo "04 - Change iterm2 Preferences -> Profiles -> Keys -> Load Preset... -> Na
 echo "Customize prompt of terminal.."
 echo "Cerca di capire come installare shell integration per iterm2 e zsh"
 echo "0x - Log out and log back in."
-echo "add ctags, vim and tmux install"
+echo "add ctags and tmux install"
 echo "change keyboard to us"
 
-
+# hw.tex" 5L, 103C
+# vimtex: Skim is not installed!
+# vimtex: latexmk is not executable
+# vimtex: Compiler was not initialized!
+# vimtex: bibtex is not executable!
+#         bibtex completion is not available!
 
