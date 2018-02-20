@@ -94,7 +94,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #awesome font
-source ~/.fonts/*.sh
+#source ~/.fonts/*.sh
 
 #rep here recursive case insensitive
 #grh() { grep -RnIi "$1" .; }
