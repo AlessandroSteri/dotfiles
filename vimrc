@@ -208,6 +208,7 @@ highlight LineNr ctermfg=grey
 try
     let g:solarized_termtrans = 1
     colorscheme solarized
+    " colorscheme solarized8
     " colorscheme gruvbox
 catch
 endtry
