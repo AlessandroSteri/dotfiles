@@ -207,7 +207,7 @@ endif
 highlight LineNr ctermfg=grey
 try
     let g:solarized_termtrans = 1
-    colorscheme solarized8
+    colorscheme solarized
 catch
 endtry
 

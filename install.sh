@@ -1,5 +1,5 @@
 #Exit immediately if a command exits with a non-zero status.
-set -e 
+set -e
 
 echo -n "[Xcode Command Line Tools] Installing..."
 xcode-select --install && echo "installed: ✓"
@@ -56,10 +56,10 @@ git clone https://github.com/AlessandroSteri/dotfiles.git $HOME/.dotfiles && ech
 
 echo -n "[Dotfiles][.Dotfiles] Installing..."
 rcup -x install.sh -x README.md -x header.png && echo "installed: ✓"
-echo "==========================="
-echo "[Installed Dotfiles]:"
+echo ""
+echo "===========================[Installed Dotfiles]==========================="
 lsrc -x install.sh -x README.md -x header.png
-echo "==========================="
+echo "=========================================================================="
 
 echo -n "[Latex][Skim]"
 brew cask install skim && echo "installed: ✓"
@@ -79,11 +79,20 @@ brew cask install spotify && echo "installed: ✓"
 echo -n "[Spotify][SpotifyControl] Installing..."
 if [ ! -d $HOME/asDeveloper ]; then
 	#echo "creating asDeveloper dir cause it doesen't exist"
-	mkdir $HOME/asDeveloper
+	mkdir -p $HOME/asDeveloper
 fi
 #echo "clone spotify control and link it so it works as a command in terminal"
 git clone https://github.com/dronir/SpotifyControl.git $HOME/asDeveloper/SpotifyControl
 ln -s $HOME/asDeveloper/SpotifyControl /usr/local/bin/spotify && echo "installed: ✓"
+
+if [ ! -d $HOME/.vim/colors ]; then
+	#echo "creating .vim/colors dir cause it doesen't exist"
+	mkdir -p $HOME/.vim/colors
+fi
+
+echo -n "[Vim][Solarized] Installing..."
+git clone https://github.com/altercation/vim-colors-solarized.git $HOME/asDeveloper/vim-colors-solarized
+cp $HOME/asDeveloper/vim-colors-solarized/colors/solarized.vim $HOME/.vim/colors/ && echo "installed: ✓"
 
 
 echo -n "[APPSTORE cli-interface] Installing..."
@@ -115,7 +124,7 @@ echo -n "[SYSTEM PREFERENCE] changing scroll direction to not natural..." #needs
 defaults write ~/Library/Preferences/.GlobalPreferences com.apple.swipescrolldirection -bool false && echo "changed: ✓"
 
 echo -n "[SYSTEM PREFERENCE] setting keyboard speed and repeat to superhero..." #needs log out for the change to take affect.
-defaults write NSGlobalDomain KeyRepeat -float 1.3 && defaults write NSGlobalDomain InitialKeyRepeat -int 11 && && echo "changed: ✓"
+defaults write NSGlobalDomain KeyRepeat -float 1.3 && defaults write NSGlobalDomain InitialKeyRepeat -int 11 && echo "changed: ✓"
 
 
 
@@ -128,7 +137,7 @@ if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
 fi
 
 # brew update
-# brew cask install java 
+# brew cask install java
 
 #da capire come lanciare in modo non interattivo e se funziona echo installed
 echo -n "[Vundle][PluginInstall] Installing..."
@@ -154,11 +163,3 @@ echo "0x - Log out and log back in."
 echo "add ctags and tmux install"
 echo "change keyboard to us"
 echo "Open a new shell to test if mactex works with vimtex, if not: Instal it from installer cause brew formula is not working with vimtex: http://www.tug.org/mactex/mactex-download.html"
-
-# hw.tex" 5L, 103C
-# vimtex: Skim is not installed!
-# vimtex: latexmk is not executable
-# vimtex: Compiler was not initialized!
-# vimtex: bibtex is not executable!
-#         bibtex completion is not available!
-
