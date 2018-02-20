@@ -55,10 +55,10 @@ echo -n "[Dotfiles][MyGitHub] cloning..."
 git clone https://github.com/AlessandroSteri/dotfiles.git $HOME/.dotfiles && echo "cloned: ✓"
 
 echo -n "[Dotfiles][.Dotfiles] Installing..."
-rcup -x install.sh && echo "installed: ✓"
+rcup -x install.sh -x README.md -x header.png && echo "installed: ✓"
 echo "==========================="
 echo "[Installed Dotfiles]:"
-lsrc -x install.sh
+lsrc -x install.sh -x README.md -x header.png
 echo "==========================="
 
 echo -n "[Latex][Skim]"
