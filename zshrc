@@ -15,7 +15,7 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
-DEFAULT_USER="alessandrosteri"
+DEFAULT_USER=$(whoami)
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
