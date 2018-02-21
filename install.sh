@@ -1,11 +1,30 @@
 #Exit immediately if a command exits with a non-zero status.
 set -e
 
+LOG="install_log"
+
+# Creating asDeveloper dir if not exist.
+if [ ! -d $HOME/asDeveloper ]; then
+	#echo "creating asDeveloper dir cause it doesen't exist"
+	mkdir -p $HOME/asDeveloper
+fi
+
+# Creating log dir if not exist.
+if [ ! -d $HOME/asDeveloper/$LOG ]; then
+	#echo "creating asDeveloper dir cause it doesen't exist"
+	mkdir -p $HOME/asDeveloper/$LOG
+fi
+
 echo -n "[Xcode Command Line Tools] Installing..."
 xcode-select --install && echo "installed: ✓"
 
-echo -n "[HOMEBREW] Installing..."
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" && echo "installed: ✓"
+# not working cause brew ask for a key to be pressed to start installing
+# > $HOME/asDeveloper/$LOG/brew.log.txt
+if test ! $(which brew)
+then
+  echo -n " [HOMEBREW] Installing..."
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" && echo "installed: ✓"
+fi
 
 echo -n "[HOMEBREW][Python2] Installing..."
 brew install python && echo "installed: ✓"
@@ -77,10 +96,7 @@ echo -n "[Spotify]"
 brew cask install spotify && echo "installed: ✓"
 
 echo -n "[Spotify][SpotifyControl] Installing..."
-if [ ! -d $HOME/asDeveloper ]; then
-	#echo "creating asDeveloper dir cause it doesen't exist"
-	mkdir -p $HOME/asDeveloper
-fi
+
 #echo "clone spotify control and link it so it works as a command in terminal"
 git clone https://github.com/dronir/SpotifyControl.git $HOME/asDeveloper/SpotifyControl
 ln -s $HOME/asDeveloper/SpotifyControl /usr/local/bin/spotify && echo "installed: ✓"
@@ -120,6 +136,9 @@ mas install 1091189122 && echo "installed: ✓"
 
 echo "[APPSTORE] done."
 
+echo -n "[Telegram] Installing..."
+brew cask install telegram && echo "installed: ✓"
+brew cask install alfred
 
 echo -n "[SYSTEM PREFERENCE] changing scroll direction to not natural..." #needs log out for the change to take affect.
 defaults write ~/Library/Preferences/.GlobalPreferences com.apple.swipescrolldirection -bool false && echo "changed: ✓"
