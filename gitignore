@@ -55,6 +55,7 @@ package-lock.json
 *.aux
 *.fls
 *.fdb
+*.fdb_latexmk
 *.glo
 *.idx
 *.log
