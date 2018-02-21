@@ -107,7 +107,7 @@ echo "should be enough not to need to open"
 sudo xcodebuild -license accept
 #must be after xcode, i know linkapp is deprecated
 echo -n "[macvim] Installing..."
-brew install macvim --override-system-vim && echo "installed: ✓"
+brew install macvim --with-override-system-vim && echo "installed: ✓"
 #se non va perche deprecato prova: ln -s /usr/local/bin/mvim vim
 brew linkapps macvim && echo "macvim linked: ✓"
 
