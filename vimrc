@@ -19,6 +19,7 @@
 "    -> Latex
 "    -> Plugins Settings
 "    -> FileType Settings
+"    -> Source Local Settings
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -648,3 +649,13 @@ augroup end
 augroup exceeded_text_width
   au filetype python match ErrorMsg '\%>80v.\+'
 augroup end
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Source Local Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Allow local vimrc
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
+
+" Local bundle on ~/.vimrc.bundles

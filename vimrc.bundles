@@ -1,3 +1,17 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sections:
+"    => go to Section
+"    -> Vundle, Header
+"    -> Vundle, Plugins
+"    -> Source Local Plugins
+"    -> Vundle, Footer
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vundle, Header
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -8,7 +22,11 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vundle, Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Define bundles via Github repos
+
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive'
 " Plugin 'tpope/vim-projectionist'
@@ -57,13 +75,9 @@ Plugin 'w0rp/ale'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'mhinz/vim-startify'
-"A Vim Plugin for Lively Previewing LaTeX PDF Output
 " Plugin 'xuhdev/vim-latex-live-preview'
-
 " Plugin 'vim-scripts/Conque-GDB' "gdb debugger for vim
-
 "Plugin 'scrooloose/nerdcommenter' "comments
-
 Plugin 'Valloric/YouCompleteMe'
 " Plugin 'nvie/vim-flake8'
 " Plugin 'chrisbra/csv.vim'
@@ -85,5 +99,17 @@ Plugin 'lifepillar/vim-solarized8'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'morhetz/gruvbox'
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Source Local Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Allow for local Vundle bundles
+if filereadable(expand("~/.vimrc.bundles.local"))
+  source ~/.vimrc.bundles.local
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vundle, Footer
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call vundle#end()            " required
 filetype plugin indent on    " required
