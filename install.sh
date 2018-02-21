@@ -101,9 +101,10 @@ brew install mas && echo "installed: ✓"
 echo "[APPSTORE][Xcode] Installing...(must be installed before installing macvim"
 mas install 497799835 && echo "[APPSTORE][Xcode] installed: ✓"
 
-echo "maybe you need to manually open xcode before enter the pasword"
+echo "[maybe not needed]maybe you need to manually open xcode before enter the pasword"
 sudo xcode-select -s /Applications/Xcode.app/Contents/Developer && echo "xcode-select: ✓"
-
+echo "should be enough not to need to open"
+sudo xcodebuild -license accept
 #must be after xcode, i know linkapp is deprecated
 echo -n "[macvim] Installing..."
 brew install macvim --override-system-vim && echo "installed: ✓"
