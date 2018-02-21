@@ -200,5 +200,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 #cd to desktop
 alias cdd="cd ~/Desktop"
 
+zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.o' '*.out' '*.log' '*.toc' '*.aux' '*.bbl' '*.pdf' '*.fdb_latexmk' '*.fls' '*.synctex.gz' '*.swp' '*.swo'
+
 #Syntax highlighting should be at the end
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
