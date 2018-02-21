@@ -14,6 +14,8 @@
   pr = !hub pull-request
   st = status
   up = !git fetch origin && git rebase origin/master
+  undo = reset HEAD~
+  pom = push origin master
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
