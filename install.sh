@@ -43,6 +43,9 @@ main() {
     echo -n "[TMUX] Installing..."
     brew install tmux && echo "installed: ✓"
 
+    echo -n "[CTAGS] Installing..."
+    brew install ctags && echo "installed: ✓"
+
     echo -n "[TMUX][reattach-to-user-namespace] Installing..."
     brew install reattach-to-user-namespace && echo "installed: ✓"
 
@@ -168,20 +171,14 @@ main() {
 
     sleep 1
     echo "Installation succesfully completed!"
-    sleep 1
     echo "...for some changes to take effect you need to log out and log back in."
     echo "TODOES:"
-    echo "01 - Edit your ~/.zshrc and set ZSH_THEME=\"powerlevel9k/powerlevel9k\"."
-    echo "02 - Edit your ~/.zshrc and add BEFORE setting ZSH_THEME variable: POWERLEVEL9K_MODE='nerdfont-complete'"
-    echo "02 - Edit your ~/.zshrc and add AT THE END: source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-    echo '00 _ Edit your ~/.zshrc and add (hide user@hostname): DEFAULT_USER="alessandrosteri" '
-    echo "00 - add zsh-autosuggestions as plugin in .zshrc: plugins=(zsh-autosuggestions git)"
-    echo "03 - Change iterm2 Preferences -> Profiles ->  Colors to solarized Dark"
-    echo "04 - Change iterm2 Preferences -> Profiles ->  Text to 14pt Knack Regular Nerd Font Complete"
-    echo "04 - Change iterm2 Preferences -> Profiles -> Keys -> Load Preset... -> Natural Text Editing"
-    echo "Customize prompt of terminal.."
+    sleep 1
+    echo "01 - Change iterm2 Preferences -> Profiles ->  Colors to solarized Dark"
+    echo "02 - Change iterm2 Preferences -> Profiles ->  Text to 14pt Knack Regular Nerd Font Complete"
+    echo "03 - Change iterm2 Preferences -> Profiles -> Keys -> Load Preset... -> Natural Text Editing"
+    echo "04 - Log out and log back in."
     echo "Cerca di capire come installare shell integration per iterm2 e zsh"
-    echo "0x - Log out and log back in."
     echo "add ctags and tmux install"
     echo "change keyboard to us"
     echo "Open a new shell to test if mactex works with vimtex, if not: Instal it from installer cause brew formula is not working with vimtex: http://www.tug.org/mactex/mactex-download.html"
