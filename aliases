@@ -16,6 +16,7 @@ alias src='source ~/.zshrc'
 alias s='spotify'
 
 #alias for common dotfiles
+alias cddot='cd ~/.dotfiles'
 alias vimrc='vim ~/.vimrc'
 alias vimrcb='vim ~/.vimrc.bundles'
 alias zshrc='vim ~/.zshrc'
