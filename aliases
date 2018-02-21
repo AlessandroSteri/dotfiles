@@ -22,6 +22,7 @@ alias vimrcb='vim ~/.vimrc.bundles'
 alias zshrc='vim ~/.zshrc'
 alias tmuxconf='vim ~/.tmux.conf'
 alias altvim='vim -u ~/Desktop/BACKUP\ VIMRC/vimrc'
+alias aliases='vim ~/.aliases'
 
 #make new dir and change to new dir
 mkcd() { mkdir "$1" && cd "$1"; }
@@ -32,6 +33,7 @@ mktc() { mkdir "$1" && cd "$1" && touch "$2" && cd ..; }
 #shortcut for parent of parent dir
 alias ...="../../"
 
+alias o="open ."
 alias mgsnt="~/asDeveloper/texmf/tex/mgsnt/mgsnt.sh"
 
 # allow using unix-like command tree in osx
