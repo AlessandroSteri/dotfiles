@@ -58,6 +58,7 @@ alias notify="tput bel"
 
 #use brew ctag (exuberant) instead of BSD ctag  to allow -R flag
 alias ctags="`brew --prefix`/bin/ctags"
+alias ctagsgenerate="ctags -R ."
 
 #cd to desktop
 alias cdd="cd ~/Desktop"
