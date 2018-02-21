@@ -1,16 +1,18 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
+# Path to your oh-my-zsh installation
 export ZSH=$HOME/.oh-my-zsh
+
+
+# NERD fonts
+POWERLEVEL9K_MODE='nerdfont-complete'
+# Awersome fonts
+# POWERLEVEL9K_MODE='awesome-fontconfig'
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-
-POWERLEVEL9K_MODE='nerdfont-complete'
-# POWERLEVEL9K_MODE='awesome-fontconfig'
-
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
 DEFAULT_USER="alessandrosteri"
@@ -18,8 +20,7 @@ DEFAULT_USER="alessandrosteri"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
+# Hyphen-insensitive completion. Case sensitive completion must be off. _ and - interchangeable.
 HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
@@ -84,89 +85,23 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #awesome font
 #source ~/.fonts/*.sh
 
-#rep here recursive case insensitive
-#grh() { grep -RnIi "$1" .; }
-
-#ls on every cd
-cs() { cd "$1" && ls; }
-
-#sudo for super fast sudo latest cmd with S !!
-alias S='sudo'
-
-#fast source bash
-alias src='source ~/.zshrc'
-
-#spotify
-alias s='spotify'
-
-#alias for common dotfiles
-alias vimrc='vim ~/.vimrc'
-alias vimrcb='vim ~/.vimrc.bundles'
-alias zshrc='vim ~/.zshrc'
-alias tmuxconf='vim ~/.tmux.conf'
-alias altvim='vim -u ~/Desktop/BACKUP\ VIMRC/vimrc'
-
-#make new dir and change to new dir
-mkcd() { mkdir "$1" && cd "$1"; }
-
-#make new dir and change to new dir TODO: insert control, if only one arg print usage dirname filename
-mktc() { mkdir "$1" && cd "$1" && touch "$2" && cd ..; }
-
-#shortcut for parent of parent dir
-alias ...="../../"
-
-alias mgsnt="/Users/alessandrosteri/asDeveloper/texmf/tex/mgsnt/mgsnt.sh"
-
-#alias cdroot ="cd /" #not working
-
-#alias cdhome = cd "~" #non serve perche basta cd solo
-
-#clear terminal
-alias c='clear'
-
-# allow using unix-like command tree in osx
-# alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
-
-#allow using macvim
-alias e="mvim -v"
-
-#fast alias, -p opens one tab for each file
-alias v="vim -p"
-#open vim read only
-alias vr="vim -R"
-
-alias V="sudo vim -p"
-
-#shortcut for latex
-alias vv="vim -p content.tex"
-
-#sublime txt from shell
-alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl --new-window $@'
-
-# iterm2 notify on completion usage cmnd; notify
-alias notify="tput bel"
-#use brew ctag (exuberant) instead of BSD ctag  to allow -R flag
-alias ctags="`brew --prefix`/bin/ctags"
-
-#add path for pandoc
-#export PATH=$PATH:/Users/alessandrosteri/.local/bin
+source ~/.aliases
 #segments display on one line, and print the command prompt below it
+
+#####################################
+#              PROMPT               #
+#####################################
+
 #POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 
 # Advanced `vi_mode` color customization
 POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='teal'
+
+# Spotify integration in prompt
 prompt_zsh_showStatus () {
     local color='%F{black}'
   state=`osascript -e 'tell application "Spotify" to player state as string'`;
@@ -178,6 +113,7 @@ prompt_zsh_showStatus () {
     echo -n "%{$color%} $artist - $track " ;
   fi
 }
+
 #cutomize right prompt add: context
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user root_indicator dir rbenv vcs dir_writable)
 
@@ -194,12 +130,7 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-#clean cwd by removing all file
-#alias cleancwd="rm -rf *"
-
-#cd to desktop
-alias cdd="cd ~/Desktop"
-
+# ZSH Autocompletion
 zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.o' '*.out' '*.log' '*.toc' '*.aux' '*.bbl' '*.pdf' '*.fdb_latexmk' '*.fls' '*.synctex.gz' '*.swp' '*.swo'
 
 #Syntax highlighting should be at the end

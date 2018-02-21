@@ -1,0 +1,69 @@
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+
+#ls on every cd
+cs() { cd "$1" && ls; }
+
+#sudo for super fast sudo latest cmd with S !!
+alias S='sudo'
+
+#fast source bash
+alias src='source ~/.zshrc'
+
+#spotify
+alias s='spotify'
+
+#alias for common dotfiles
+alias vimrc='vim ~/.vimrc'
+alias vimrcb='vim ~/.vimrc.bundles'
+alias zshrc='vim ~/.zshrc'
+alias tmuxconf='vim ~/.tmux.conf'
+alias altvim='vim -u ~/Desktop/BACKUP\ VIMRC/vimrc'
+
+#make new dir and change to new dir
+mkcd() { mkdir "$1" && cd "$1"; }
+
+#make new dir and change to new dir TODO: insert control, if only one arg print usage dirname filename
+mktc() { mkdir "$1" && cd "$1" && touch "$2" && cd ..; }
+
+#shortcut for parent of parent dir
+alias ...="../../"
+
+alias mgsnt="~/asDeveloper/texmf/tex/mgsnt/mgsnt.sh"
+
+# allow using unix-like command tree in osx
+# alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+
+#allow using macvim i think is not needed since is linked to vim, maybe no yet in MacBookPro
+# alias e="mvim -v"
+
+#fast alias, -p opens one tab for each file
+alias v="vim -p"
+
+#open vim read only
+alias vr="vim -R"
+
+alias V="sudo vim -p"
+
+#shortcut for latex
+alias vv="vim -p content.tex"
+
+#sublime txt from shell
+alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl --new-window $@'
+
+# iterm2 notify on completion usage cmnd; notify
+alias notify="tput bel"
+
+#use brew ctag (exuberant) instead of BSD ctag  to allow -R flag
+alias ctags="`brew --prefix`/bin/ctags"
+
+#cd to desktop
+alias cdd="cd ~/Desktop"
+
+alias :w="echo this isn\'t vim!"
+alias :q='exit'
+
+# Allow for local aliases
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local
