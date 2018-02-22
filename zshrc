@@ -6,14 +6,24 @@ export ZSH=$HOME/.oh-my-zsh
 
 
 # NERD fonts
+
 POWERLEVEL9K_MODE='nerdfont-complete'
 # Awersome fonts
 # POWERLEVEL9K_MODE='awesome-fontconfig'
 
+if [[ -n $SSH_CONNECTION ]]; then
+  echo "SSH session, usign agnoster theme"
+  ZSH_THEME="agnoster"
+  export USER=``
+  export HOST=``
+else
+  ZSH_THEME="powerlevel9k/powerlevel9k"
+fi
+
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerlevel9k/powerlevel9k"
 
 DEFAULT_USER=$(whoami)
 
@@ -73,14 +83,6 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  echo a
-  ZSH_THEME="agnoster"
-  export USER=``
-else
-  echo b
-fi
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
