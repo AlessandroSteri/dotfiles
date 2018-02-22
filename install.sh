@@ -172,6 +172,12 @@ main() {
     vim -u $HOME/.vimrc.bundles +PluginInstall +qall && echo "installed: ✓"
     ~/.vim/bundle/YouCompleteMe/install.py --clang-completer
 
+    # SSH
+    # Enabling SSH [syst - pref sharing - remote login]
+    sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
+    # Disabling SSH
+    # sudo launchctl unload /System/Library/LaunchDaemons/ssh.plist
+
     sleep 1
     echo "Installation succesfully completed!"
     echo "...for some changes to take effect you need to log out and log back in."
