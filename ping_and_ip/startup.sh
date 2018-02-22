@@ -15,6 +15,7 @@
 # # OUT=$IP_ADR,$LIP
 # # telegram-send $OUT
 #
+PORT="99"
 while [ 1 ]
 do
     # sleep 2m #maybe obsolete
@@ -28,6 +29,7 @@ do
     telegram-send "WHOAMI: $WHO, HOST: $HOST"
     telegram-send $PING
     telegram-send $IP
+    telegram-send "ssh $WHO@$IP -v -p $PORT"
     # echo $(date +%H:%M:%S)
     sleep 3600
 done
