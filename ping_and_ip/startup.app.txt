@@ -1,3 +1,11 @@
+###################################
+HOW TO ############################
+###################################
+
+folllow instruction here: https://stackoverflow.com/a/6443837/7675432
+
+using following apple script:
+
 tell application "Terminal"
 	activate
 	do script "$HOME/.dotfiles/ping_and_ip/startup.sh"
