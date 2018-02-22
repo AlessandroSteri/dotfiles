@@ -638,6 +638,12 @@ map <Leader>ds :DeleteSession
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => FileType Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Execute bash script from within vim
+map <Leader>` :w !bash <CR>
+" Execute python script from within vim
+map <Leader>~ :w !python <CR>
+
 " Set syntax highlighting for specific file types
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 
