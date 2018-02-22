@@ -6,9 +6,9 @@ export ZSH=$HOME/.oh-my-zsh
 
 
 # NERD fonts
-# POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_MODE='nerdfont-complete'
 # Awersome fonts
-POWERLEVEL9K_MODE='awesome-fontconfig'
+# POWERLEVEL9K_MODE='awesome-fontconfig'
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -73,11 +73,13 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  echo a
+  ZSH_THEME="agnoster"
+  export USER=``
+else
+  echo b
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
