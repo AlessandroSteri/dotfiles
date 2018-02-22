@@ -40,6 +40,9 @@ main() {
     echo -n "[GIT] Installing..."
     brew install git && echo "installed: ✓"
 
+    echo -n "[WGET] Installing..."
+    brew install wget && echo "installed: ✓"
+
     echo -n "[TMUX] Installing..."
     brew install tmux && echo "installed: ✓"
 
