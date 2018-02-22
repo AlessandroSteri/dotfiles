@@ -79,10 +79,10 @@ main() {
     git clone https://github.com/AlessandroSteri/dotfiles.git $HOME/.dotfiles && echo "cloned: ✓"
 
     echo -n "[Dotfiles][.Dotfiles] Installing..."
-    rcup -x install.sh -x README.md -x header.png -x test && echo "installed: ✓"
+    rcup -x install.sh -x README.md -x header.png -x test -x ping_and_ip && echo "installed: ✓"
     echo ""
     echo "===========================[Installed Dotfiles]==========================="
-    lsrc -x install.sh -x README.md -x header.png -x test
+    lsrc -x install.sh -x README.md -x header.png -x test -x ping_and_ip
     echo "=========================================================================="
 
     echo -n "[Latex][Skim]"

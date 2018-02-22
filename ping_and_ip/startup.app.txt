@@ -1,0 +1,4 @@
+tell application "Terminal"
+	activate
+	do script "$HOME/.dotfiles/ping_and_ip/startup.sh"
+end tell
