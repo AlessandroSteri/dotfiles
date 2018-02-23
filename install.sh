@@ -50,53 +50,53 @@ main() {
 
     if [ ! $(command_exists "git") ]; then
         echo -n "[GIT] Installing..."
-        brew install git && echo "installed: ✓"
+        brew install git >/dev/null && echo "installed: ✓"
     fi
 
 
     if [ ! $(command_exists "wget") ]; then
         echo -n "[WGET] Installing..."
-        brew install wget && echo "installed: ✓"
+        brew install wget >/dev/null && echo "installed: ✓"
     fi
 
 
     if [ ! $(command_exists "tmux") ]; then
         echo -n "[TMUX] Installing..."
-        brew install tmux && echo "installed: ✓"
+        brew install tmux >/dev/null && echo "installed: ✓"
     fi
 
 
     echo -n "[CTAGS] Installing..."
-    brew install ctags && echo "installed: ✓"
+    brew install ctags >/dev/null && echo "installed: ✓"
 
 
     if [ ! $(command_exists "reattach-to-user-namespace") ]; then
         echo -n "[TMUX][reattach-to-user-namespace] Installing..."
-        brew install reattach-to-user-namespace && echo "installed: ✓"
+        brew install reattach-to-user-namespace >/dev/null && echo "installed: ✓"
     fi
 
 
     echo -n "[ITERM2] Installing..."
-    brew cask install iterm2 && echo "installed: ✓"
+    brew cask install iterm2 >/dev/null && echo "installed: ✓"
 
     if [ ! $(command_exists "zsh") ]; then
         echo -n "[ITERM2][Oh My Zsh] Installing..."
-        sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" && echo "installed: ✓"
+        sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" >/dev/null && echo "installed: ✓"
     fi
 
 
     echo -n "[ITERM2][Oh My Zsh][powerlevel9k] Installing..."
-    git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k && echo "installed: ✓"
+    git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k >/dev/null && echo "installed: ✓"
 
     echo -n "[ITERM2][Oh My Zsh][powerlevel9k][nerdfont] Installing..."
-    brew tap caskroom/fonts
-    brew cask install font-hack-nerd-font && echo "installed: ✓"
+    brew tap caskroom/fonts >/dev/null
+    brew cask install font-hack-nerd-font >/dev/null && echo "installed: ✓"
 
     # echo -n "[ITERM2][Oh My Zsh][zsh-autosuggestions] Installing..."
     # git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions && echo "installed: ✓ [Not active in default zshrc]"
 
     echo -n "[ITERM2][Oh My Zsh][syntax-highlighting] Installing..."
-    brew install zsh-syntax-highlighting && echo "installed: ✓"
+    brew install zsh-syntax-highlighting >/dev/null && echo "installed: ✓"
 
 
     echo "must do the rcm thing so to have .dotfiles folder for spotifycontrol"
@@ -107,19 +107,19 @@ main() {
 
     if [ ! $(command_exists "rcup") ]; then
         echo -n "[Dotfiles][rcm] Installing..."
-        brew tap thoughtbot/formulae
-        brew install rcm && echo "installed: ✓"
+        brew tap thoughtbot/formulae >/dev/null
+        brew install rcm >/dev/null && echo "installed: ✓"
     fi
 
 
     # TODO: to test
     if [ -d $HOME/.dotfiles ]; then
-        mkdir -p dotfiles_old-$(date +%Y)-$(date +%D)
-        mv $HOME/.dotfiles $HOME/dotfiles_old-$(date +%Y)-$(date +%D)
+        mkdir -p dotfiles_old-$(date +%Y)-$(date +%D) >/dev/null
+        mv $HOME/.dotfiles $HOME/dotfiles_old-$(date +%Y)-$(date +%D) >/dev/null
     fi
 
     echo -n "[Dotfiles][MyGitHub] cloning..."
-    git clone https://github.com/AlessandroSteri/dotfiles.git $HOME/.dotfiles && echo "cloned: ✓"
+    git clone https://github.com/AlessandroSteri/dotfiles.git $HOME/.dotfiles >/dev/null && echo "cloned: ✓"
 
     echo "Backup existing dotfiles, stil have to handle dotfiles nested in folders"
 
@@ -129,7 +129,7 @@ main() {
 
     if [ ! -d $HOME/dotfiles_old ]; then
         #echo "creating dotfiles_old dir cause it doesen't exist"
-        mkdir -p $HOME/dotfiles_old
+        mkdir -p $HOME/dotfiles_old >/dev/null
     fi
 
     for DOT_FILE in $(${CMD_LSRC[@]}); do
@@ -139,7 +139,7 @@ main() {
         # if exist
         if [ -f $HOME/$DOT_FILE_NAME ]; then
             echo "$DOT_FILE_NAME exists, moving into $HOME/dotfiles_old."
-            mv $HOME/$DOT_FILE_NAME $HOME/dotfiles_old
+            mv $HOME/$DOT_FILE_NAME $HOME/dotfiles_old >/dev/null
         else
             echo "New dotfile $DOT_FILE_NAME will be installed."
         fi
@@ -149,7 +149,7 @@ main() {
     CMD_RCUP=()
     CMD_RCUP=('rcup' $ARGS)
     # rcup -x install.sh -x README.md -x header.png -x test -x ping_and_ip -x utils && echo "installed: ✓"
-    "${CMD_RCUP[@]}" && echo "installed: ✓"
+    "${CMD_RCUP[@]}" >/dev/null && echo "installed: ✓"
 
     echo "===========================[Installed Dotfiles]==========================="
     "${CMD_LSRC[@]}"
@@ -161,25 +161,25 @@ main() {
 #                         LATEX                            #
 ############################################################
     echo -n "[Latex][Skim]"
-    brew cask install skim && echo "installed: ✓"
+    brew cask install skim >/dev/null && echo "installed: ✓"
     # [PROBABLY WORK, JUST OPEN A NEW SHELL] not vorking with vimtex, cant find latexmk and bibtex
     echo -n "[Latex][mactex]"
-    brew cask install mactex && echo "installed: ✓"
+    brew cask install mactex >/dev/null && echo "installed: ✓"
     # to uninstal (so i can retry to make it work)
     # brew cask remove mactex
 
 
     # if in the need of a fast yet ugly all-inclusive latex editing env
-    # brew cask install texmaker
+    # brew cask install texmaker >/dev/null
 
     echo -n "[Spotify]"
-    brew cask install spotify && echo "installed: ✓"
+    brew cask install spotify >/dev/null && echo "installed: ✓"
 
     echo -n "[Spotify][SpotifyControl] Installing..."
 
     #echo "clone spotify control and link it so it works as a command in terminal"
-    git clone https://github.com/dronir/SpotifyControl.git $HOME/asDeveloper/SpotifyControl
-    ln -s $HOME/asDeveloper/SpotifyControl /usr/local/bin/spotify && echo "installed: ✓"
+    git clone https://github.com/dronir/SpotifyControl.git $HOME/asDeveloper/SpotifyControl >/dev/null
+    ln -s $HOME/asDeveloper/SpotifyControl /usr/local/bin/spotify >/dev/null && echo "installed: ✓"
 
     if [ ! -d $HOME/.vim/colors ]; then
         #echo "creating .vim/colors dir cause it doesen't exist"
@@ -187,39 +187,39 @@ main() {
     fi
 
     echo -n "[Vim][Solarized] Installing..."
-    git clone https://github.com/altercation/vim-colors-solarized.git $HOME/asDeveloper/vim-colors-solarized
+    git clone https://github.com/altercation/vim-colors-solarized.git $HOME/asDeveloper/vim-colors-solarized >/dev/null
     cp $HOME/asDeveloper/vim-colors-solarized/colors/solarized.vim $HOME/.vim/colors/ && echo "installed: ✓"
 
 
     echo -n "[APPSTORE cli-interface] Installing..."
-    brew install mas && echo "installed: ✓"
+    brew install mas >/dev/null && echo "installed: ✓"
 
     echo "[APPSTORE][Xcode] Installing...(must be installed before installing macvim"
-    mas install 497799835 && echo "[APPSTORE][Xcode] installed: ✓"
+    mas install 497799835 >/dev/null && echo "[APPSTORE][Xcode] installed: ✓"
 
     echo "[maybe not needed] maybe you need to manually open xcode before enter the pasword"
-    sudo xcode-select -s /Applications/Xcode.app/Contents/Developer && echo "xcode-select: ✓"
+    sudo xcode-select -s /Applications/Xcode.app/Contents/Developer >/dev/null && echo "xcode-select: ✓"
     echo "should be enough not to need to open"
-    sudo xcodebuild -license accept
+    sudo xcodebuild -license accept >/dev/null
     #must be after xcode, i know linkapp is deprecated
     echo -n "[macvim] Installing..."
-    brew install macvim --with-override-system-vim && echo "installed: ✓"
+    brew install macvim --with-override-system-vim >/dev/null && echo "installed: ✓"
     #se non va perche deprecato prova: ln -s /usr/local/bin/mvim vim
-    brew linkapps macvim && echo "macvim linked: ✓"
+    brew linkapps macvim >/dev/null && echo "macvim linked: ✓"
 
 
     echo -n "[APPSTORE][Notability] installing ..."
-    mas install 736189492 && echo "installed: ✓"
+    mas install 736189492 >/dev/null && echo "installed: ✓"
 
     echo -n "[APPSTORE][Bear] Installing..."
-    mas install 1091189122 && echo "installed: ✓"
+    mas install 1091189122 >/dev/null && echo "installed: ✓"
 
     echo "[APPSTORE] done."
 
     echo -n "[Telegram] Installing..."
-    brew cask install telegram && echo "installed: ✓"
+    brew cask install telegram >/dev/null && echo "installed: ✓"
     echo -n "[Alfred] Installing..."
-    brew cask install alfred
+    brew cask install >/dev/null alfred
 
     echo -n "[SYSTEM PREFERENCE] changing scroll direction to not natural..." #needs log out for the change to take affect.
     defaults write ~/Library/Preferences/.GlobalPreferences com.apple.swipescrolldirection -bool false && echo "changed: ✓"
@@ -229,7 +229,7 @@ main() {
 
     if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
         echo -n "[Vundle] Installing..."
-        git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim && echo "installed: ✓"
+        git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim >/dev/null && echo "installed: ✓"
     fi
 
     # brew update
@@ -238,7 +238,7 @@ main() {
     #da capire come lanciare in modo non interattivo e se funziona echo installed
     echo -n "[Vundle][PluginInstall] Installing..."
     vim -u $HOME/.vimrc.bundles +PluginInstall +qall && echo "installed: ✓"
-    ~/.vim/bundle/YouCompleteMe/install.py --clang-completer
+    ~/.vim/bundle/YouCompleteMe/install.py --clang-completer >/dev/null
 
     # SSH
     # Enabling SSH [syst - pref sharing - remote login]
@@ -293,3 +293,5 @@ ask_confirmation(){
 command_exists(){
     if [ $(command -v $1) ]; then echo true; fi
 }
+
+main "$@"
