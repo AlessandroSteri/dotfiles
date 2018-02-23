@@ -80,6 +80,25 @@ main() {
 
     echo -n "[Dotfiles][MyGitHub] cloning..."
     git clone https://github.com/AlessandroSteri/dotfiles.git $HOME/.dotfiles && echo "cloned: ✓"
+    #
+    # echo "Backup existing dotfiles, stil have to handle dotfiles nested in folders"
+    # # if not exist
+    # mkdir ~/dotfiles_old/
+    #
+    # for i in $( lsrc -x install.sh -x README.md -x header.png -x test -x ping_and_ip -x utils ); do
+    #             echo $(basename .$i)
+    #             # if exist
+    #             mv ~/.vim ~/dotfiles_old/
+    #         done
+    #
+    # ARGS='-x install.sh -x README.md -x header.png -x test -x ping_and_ip -x utils'
+    # CMD_LSRC=()
+    # CMD_LSRC=('lsrc' $ARGS)
+    # "${CMD_LSRC[@]}"
+    # CMD_RCUP=()
+    # CMD_RCUP=('rcup' $ARGS)
+    # "${CMD_RCUP[@]}"
+    #
 
     echo -n "[Dotfiles][.Dotfiles] Installing..."
     rcup -x install.sh -x README.md -x header.png -x test -x ping_and_ip -x utils && echo "installed: ✓"
@@ -177,6 +196,9 @@ main() {
     sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
     # Disabling SSH
     # sudo launchctl unload /System/Library/LaunchDaemons/ssh.plist
+
+    # Install mosh to have a more reliable ssh
+    brew install mobile-shell
 
     sleep 1
     echo "Installation succesfully completed!"
