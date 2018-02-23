@@ -1,7 +1,10 @@
 #!/bin/bash
 
+set -x
+trap read debug
+
 #Exit immediately if a command exits with a non-zero status.
-set -e
+# set -e
 main() {
     LOG="install_log"
 
@@ -12,51 +15,75 @@ main() {
     fi
 
     # Creating log dir if not exist.
-    if [ ! -d $HOME/asDeveloper/$LOG ]; then
+    # if [ ! -d $HOME/asDeveloper/$LOG ]; then
         #echo "creating asDeveloper dir cause it doesen't exist"
-        mkdir -p $HOME/asDeveloper/$LOG
-    fi
+        # mkdir -p $HOME/asDeveloper/$LOG
+    # fi
 
+    # check how to check if is ok like other stuff
     echo -n "[Xcode Command Line Tools] Installing..."
     xcode-select --install && echo "installed: ✓"
 
     # not working cause brew ask for a key to be pressed to start installing
     # > $HOME/asDeveloper/$LOG/brew.log.txt
+
     if test ! $(which brew)
     then
       echo -n " [HOMEBREW] Installing..."
       /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" && echo "installed: ✓"
     fi
+    if [ ! $(command_exists "python2") ]; then
+        echo -n "[HOMEBREW][Python2] Installing..."
+        brew install python >/dev/null && echo "installed: ✓"
+    fi
 
-    echo -n "[HOMEBREW][Python2] Installing..."
-    brew install python && echo "installed: ✓"
+    if [ ! $(command_exists "cmake") ]; then
+        echo -n "[HOMEBREW][cmake] Installing..."
+        brew install cmake >/dev/null && echo "installed: ✓"
+    fi
 
-    echo -n "[HOMEBREW][cmake] Installing..."
-    brew install cmake && echo "installed: ✓"
+    if [ ! $(command_exists "python3") ]; then
+        echo -n "[HOMEBREW][Python3] Installing..."
+        brew install python3 >/dev/null && echo "installed: ✓"
+    fi
 
-    echo -n "[HOMEBREW][Python3] Installing..."
-    brew install python3 && echo "installed: ✓"
 
-    echo -n "[GIT] Installing..."
-    brew install git && echo "installed: ✓"
+    if [ ! $(command_exists "git") ]; then
+        echo -n "[GIT] Installing..."
+        brew install git && echo "installed: ✓"
+    fi
 
-    echo -n "[WGET] Installing..."
-    brew install wget && echo "installed: ✓"
 
-    echo -n "[TMUX] Installing..."
-    brew install tmux && echo "installed: ✓"
+    if [ ! $(command_exists "wget") ]; then
+        echo -n "[WGET] Installing..."
+        brew install wget && echo "installed: ✓"
+    fi
+
+
+    if [ ! $(command_exists "tmux") ]; then
+        echo -n "[TMUX] Installing..."
+        brew install tmux && echo "installed: ✓"
+    fi
+
 
     echo -n "[CTAGS] Installing..."
     brew install ctags && echo "installed: ✓"
 
-    echo -n "[TMUX][reattach-to-user-namespace] Installing..."
-    brew install reattach-to-user-namespace && echo "installed: ✓"
+
+    if [ ! $(command_exists "reattach-to-user-namespace") ]; then
+        echo -n "[TMUX][reattach-to-user-namespace] Installing..."
+        brew install reattach-to-user-namespace && echo "installed: ✓"
+    fi
+
 
     echo -n "[ITERM2] Installing..."
     brew cask install iterm2 && echo "installed: ✓"
 
-    echo -n "[ITERM2][Oh My Zsh] Installing..."
-    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" && echo "installed: ✓"
+    if [ ! $(command_exists "zsh") ]; then
+        echo -n "[ITERM2][Oh My Zsh] Installing..."
+        sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" && echo "installed: ✓"
+    fi
+
 
     echo -n "[ITERM2][Oh My Zsh][powerlevel9k] Installing..."
     git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k && echo "installed: ✓"
@@ -65,8 +92,8 @@ main() {
     brew tap caskroom/fonts
     brew cask install font-hack-nerd-font && echo "installed: ✓"
 
-    echo -n "[ITERM2][Oh My Zsh][zsh-autosuggestions] Installing..."
-    git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions && echo "installed: ✓ [Not active in default zshrc]"
+    # echo -n "[ITERM2][Oh My Zsh][zsh-autosuggestions] Installing..."
+    # git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions && echo "installed: ✓ [Not active in default zshrc]"
 
     echo -n "[ITERM2][Oh My Zsh][syntax-highlighting] Installing..."
     brew install zsh-syntax-highlighting && echo "installed: ✓"
@@ -78,9 +105,18 @@ main() {
 #                      DOTFILES                            #
 ############################################################
 
-    echo -n "[Dotfiles][rcm] Installing..."
-    brew tap thoughtbot/formulae
-    brew install rcm && echo "installed: ✓"
+    if [ ! $(command_exists "rcup") ]; then
+        echo -n "[Dotfiles][rcm] Installing..."
+        brew tap thoughtbot/formulae
+        brew install rcm && echo "installed: ✓"
+    fi
+
+
+    # TODO: to test
+    if [ -d $HOME/.dotfiles ]; then
+        mkdir -p dotfiles_old-$(date +%Y)-$(date +%D)
+        mv $HOME/.dotfiles $HOME/dotfiles_old-$(date +%Y)-$(date +%D)
+    fi
 
     echo -n "[Dotfiles][MyGitHub] cloning..."
     git clone https://github.com/AlessandroSteri/dotfiles.git $HOME/.dotfiles && echo "cloned: ✓"
@@ -161,7 +197,7 @@ main() {
     echo "[APPSTORE][Xcode] Installing...(must be installed before installing macvim"
     mas install 497799835 && echo "[APPSTORE][Xcode] installed: ✓"
 
-    echo "[maybe not needed]maybe you need to manually open xcode before enter the pasword"
+    echo "[maybe not needed] maybe you need to manually open xcode before enter the pasword"
     sudo xcode-select -s /Applications/Xcode.app/Contents/Developer && echo "xcode-select: ✓"
     echo "should be enough not to need to open"
     sudo xcodebuild -license accept
@@ -182,6 +218,7 @@ main() {
 
     echo -n "[Telegram] Installing..."
     brew cask install telegram && echo "installed: ✓"
+    echo -n "[Alfred] Installing..."
     brew cask install alfred
 
     echo -n "[SYSTEM PREFERENCE] changing scroll direction to not natural..." #needs log out for the change to take affect.
@@ -190,14 +227,9 @@ main() {
     echo -n "[SYSTEM PREFERENCE] setting keyboard speed and repeat to superhero..." #needs log out for the change to take affect.
     defaults write NSGlobalDomain KeyRepeat -float 1.3 && defaults write NSGlobalDomain InitialKeyRepeat -int 11 && echo "changed: ✓"
 
-
-
-    #!/bin/sh
-
     if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
         echo -n "[Vundle] Installing..."
         git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim && echo "installed: ✓"
-        echo "installed"
     fi
 
     # brew update
@@ -234,10 +266,30 @@ main() {
 
 success () {
   printf "\r\033[2K  [ \033[00;32mOK ✓\033[0m ] $1\n"
+  echo ''
 }
 
 fail () {
   printf "\r\033[2K  [\033[0;31m FAIL \033[0m] $1\n"
-  # echo ''
+  echo ''
   # exit
+}
+
+
+ask_confirmation(){
+    while true; do
+        read -p "Do you wish to install [$1]?" yn
+        case $yn in
+            [Yy]* ) make install; break;;
+            [Nn]* ) exit;;
+            * ) echo "Please answer yes or no.";;
+        esac
+    done
+}
+# ask_conf "HKJ EKJ EJK"
+
+# non working with: iterm, powerlevel9k, nerd fonts, zsh/syntax-highliting, mactex, skim, spotify
+# for rcm do rcup or lsrc
+command_exists(){
+    if [ $(command -v $1) ]; then echo true; fi
 }
