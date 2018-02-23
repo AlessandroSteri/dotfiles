@@ -29,7 +29,7 @@ do
     telegram-send "WHOAMI: $WHO, HOST: $HOST"
     telegram-send $PING
     telegram-send $IP
-    telegram-send "ssh $WHO@$IP -v -p $PORT"
+    telegram-send "ssh $WHO@$PING -v -p $PORT"
     # echo $(date +%H:%M:%S)
     sleep 3600
 done
