@@ -12,7 +12,7 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 # POWERLEVEL9K_MODE='awesome-fontconfig'
 
 if [[ -n $SSH_CONNECTION ]]; then
-  echo "SSH session, usign agnoster theme"
+  echo "SSH session, using agnoster theme"
   ZSH_THEME="agnoster"
   export USER=``
   export HOST=``
