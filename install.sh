@@ -71,8 +71,12 @@ main() {
     echo -n "[ITERM2][Oh My Zsh][syntax-highlighting] Installing..."
     brew install zsh-syntax-highlighting && echo "installed: ✓"
 
-    echo "must backup existing dotfiles, git clone and install new dotfiles"
+
     echo "must do the rcm thing so to have .dotfiles folder for spotifycontrol"
+
+############################################################
+#                      DOTFILES                            #
+############################################################
 
     echo -n "[Dotfiles][rcm] Installing..."
     brew tap thoughtbot/formulae
@@ -80,33 +84,46 @@ main() {
 
     echo -n "[Dotfiles][MyGitHub] cloning..."
     git clone https://github.com/AlessandroSteri/dotfiles.git $HOME/.dotfiles && echo "cloned: ✓"
-    #
-    # echo "Backup existing dotfiles, stil have to handle dotfiles nested in folders"
-    # # if not exist
-    # mkdir ~/dotfiles_old/
-    #
-    # for i in $( lsrc -x install.sh -x README.md -x header.png -x test -x ping_and_ip -x utils ); do
-    #             echo $(basename .$i)
-    #             # if exist
-    #             mv ~/.vim ~/dotfiles_old/
-    #         done
-    #
-    # ARGS='-x install.sh -x README.md -x header.png -x test -x ping_and_ip -x utils'
-    # CMD_LSRC=()
-    # CMD_LSRC=('lsrc' $ARGS)
-    # "${CMD_LSRC[@]}"
-    # CMD_RCUP=()
-    # CMD_RCUP=('rcup' $ARGS)
-    # "${CMD_RCUP[@]}"
-    #
+
+    echo "Backup existing dotfiles, stil have to handle dotfiles nested in folders"
+
+    ARGS='-x install.sh -x README.md -x header.png -x test -x ping_and_ip -x utils'
+    CMD_LSRC=()
+    CMD_LSRC=('lsrc' $ARGS)
+
+    if [ ! -d $HOME/dotfiles_old ]; then
+        #echo "creating dotfiles_old dir cause it doesen't exist"
+        mkdir -p $HOME/dotfiles_old
+    fi
+
+    for DOT_FILE in $(${CMD_LSRC[@]}); do
+        # echo .$(basename $DOT_FILE)
+        DOT_FILE_NAME=.$(basename $DOT_FILE)
+        # echo $DOT_FILE_NAME
+        # if exist
+        if [ -f $HOME/$DOT_FILE_NAME ]; then
+            echo "$DOT_FILE_NAME exists, moving into $HOME/dotfiles_old."
+            mv $HOME/$DOT_FILE_NAME $HOME/dotfiles_old
+        else
+            echo "New dotfile $DOT_FILE_NAME will be installed."
+        fi
+    done
 
     echo -n "[Dotfiles][.Dotfiles] Installing..."
-    rcup -x install.sh -x README.md -x header.png -x test -x ping_and_ip -x utils && echo "installed: ✓"
-    echo ""
+    CMD_RCUP=()
+    CMD_RCUP=('rcup' $ARGS)
+    # rcup -x install.sh -x README.md -x header.png -x test -x ping_and_ip -x utils && echo "installed: ✓"
+    "${CMD_RCUP[@]}" && echo "installed: ✓"
+
     echo "===========================[Installed Dotfiles]==========================="
-    lsrc -x install.sh -x README.md -x header.png -x test -x ping_and_ip -x utils
+    "${CMD_LSRC[@]}"
     echo "=========================================================================="
 
+
+
+############################################################
+#                         LATEX                            #
+############################################################
     echo -n "[Latex][Skim]"
     brew cask install skim && echo "installed: ✓"
     # [PROBABLY WORK, JUST OPEN A NEW SHELL] not vorking with vimtex, cant find latexmk and bibtex
@@ -198,21 +215,17 @@ main() {
     # sudo launchctl unload /System/Library/LaunchDaemons/ssh.plist
 
     # Install mosh to have a more reliable ssh
-    brew install mobile-shell
+    # brew install mosh
 
-    sleep 1
     echo "Installation succesfully completed!"
-    echo "...for some changes to take effect you need to log out and log back in."
     echo "TODOES:"
     sleep 1
     echo "01 - Change iterm2 Preferences -> Profiles ->  Colors to solarized Dark"
     echo "02 - Change iterm2 Preferences -> Profiles ->  Text to 14pt Knack Regular Nerd Font Complete"
     echo "03 - Change iterm2 Preferences -> Profiles -> Keys -> Load Preset... -> Natural Text Editing"
-    echo "04 - Log out and log back in."
+    echo "...for some changes to take effect you need to log out and log back in."
     echo "Cerca di capire come installare shell integration per iterm2 e zsh"
-    echo "add ctags and tmux install"
     echo "change keyboard to us"
-    echo "Open a new shell to test if mactex works with vimtex, if not: Instal it from installer cause brew formula is not working with vimtex: http://www.tug.org/mactex/mactex-download.html"
 }
 
 #############################################
