@@ -1,7 +1,8 @@
 #!/bin/bash
 
-set -x
-trap read debug
+# Debug
+# set -x
+# trap read debug
 
 #Exit immediately if a command exits with a non-zero status.
 # set -e
