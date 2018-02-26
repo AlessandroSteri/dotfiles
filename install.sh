@@ -77,6 +77,11 @@ main() {
     fi
 
 
+    if [ ! $(command_exists "tmate") ]; then
+        echo -n "[TMUX][TMATE] Installing..."
+        brew install tmate >/dev/null && echo "installed: ✓"
+
+
     echo -n "[ITERM2] Installing..."
     brew cask install iterm2 >/dev/null && echo "installed: ✓"
 
