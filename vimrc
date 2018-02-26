@@ -375,6 +375,12 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.space = "\ua0"
 " let g:airline_theme='solarized'
+"
+" Don't counts whitespsces as errors
+let g:airline#extensions#whitespace#enabled = 0
+" Enabled by default
+" let g:airline#extensions#branch#enabled = 1
+
 " Enable w0rp/ale extension for airline
 let g:airline#extensions#ale#enabled = 1
 
@@ -553,6 +559,12 @@ let g:vimtex_compiler_latexmk = {'callback' : 0}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Fugitive
+nnoremap <silent> <Leader>gs :Gstatus<CR>
+nnoremap <silent> <Leader>gc :Gcommit<CR>
+nnoremap <silent> <Leader>gd :Gdiff<CR>
+
 " Fuzzy finder: ignore stuff that can't be opened, and generated files
 let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
 
