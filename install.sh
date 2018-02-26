@@ -33,6 +33,7 @@ main() {
       echo -n " [HOMEBREW] Installing..."
       /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" && echo "installed: ✓"
     fi
+
     if [ ! $(command_exists "python2") ]; then
         echo -n "[HOMEBREW][Python2] Installing..."
         brew install python >/dev/null && echo "installed: ✓"
@@ -80,6 +81,8 @@ main() {
     if [ ! $(command_exists "tmate") ]; then
         echo -n "[TMUX][TMATE] Installing..."
         brew install tmate >/dev/null && echo "installed: ✓"
+    fi
+
 
 
     echo -n "[ITERM2] Installing..."
@@ -264,6 +267,8 @@ main() {
     echo "...for some changes to take effect you need to log out and log back in."
     echo "Cerca di capire come installare shell integration per iterm2 e zsh"
     echo "change keyboard to us"
+    echo "for tmate to work you must generate a ssh-key if not existing"
+    echo "inistial script: send via telegram tmate session or just let it on"
 }
 
 #############################################
