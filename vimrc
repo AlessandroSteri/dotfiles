@@ -669,6 +669,10 @@ autocmd! User GoyoLeave Limelight!
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
 
+" [ YCM-Generator ]
+" https://github.com/rdnetto/YCM-Generator
+" :YcmGenerateConfig or :CCGenerateConfig
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => FileType Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
