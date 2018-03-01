@@ -648,6 +648,26 @@ map <Leader>os :OpenSession
 map <Leader>cs :CloseSession
 map <Leader>ds :DeleteSession
 
+" " [completor]
+" let g:completor_python_binary = '/usr/local/lib/python2.7/site-packages/jedi'
+" let g:completor_clang_binary = '/usr/bin/clang'
+" " To pass extra clang arguments, you can create a file named .clang_complete under the project root directory or any parent directories, see https://github.com/maralla/completor.vim
+"
+"
+" [ thoughtstream/Damian-Conway-s-Vim-Setup ]
+vmap  <expr>  <LEFT>   DVB_Drag('left')
+vmap  <expr>  <RIGHT>  DVB_Drag('right')
+vmap  <expr>  <DOWN>   DVB_Drag('down')
+vmap  <expr>  <UP>     DVB_Drag('up')
+vmap  <expr>  D        DVB_Duplicate()
+"
+
+" [ limelight ]
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => FileType Settings
