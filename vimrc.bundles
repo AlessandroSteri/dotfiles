@@ -41,6 +41,9 @@ Plug 'blarghmatey/split-expander'
 " Plugin 'rking/ag.vim'
 Plug 'sjl/vitality.vim'
 Plug 'kien/ctrlp.vim'
+" PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run install script
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 " Plugin 'janko-m/vim-test'
 " Plugin 'tpope/vim-bundler'
 " Plugin 'ecomba/vim-ruby-refactoring'
@@ -54,7 +57,7 @@ Plug 'tpope/vim-surround'
 " Plugin 'kana/vim-textobj-user'
 " Plugin 'nelstrom/vim-textobj-rubyblock'
 Plug 'vim-scripts/tComment'
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plugin 'MarcWeber/vim-addon-mw-utils'
 " Plugin 'tomtom/tlib_vim'
 Plug 'skwp/greplace.vim'
@@ -86,7 +89,7 @@ Plug 'mhinz/vim-startify'
 " Plugin 'xuhdev/vim-latex-live-preview'
 " Plugin 'vim-scripts/Conque-GDB' "gdb debugger for vim
 "Plugin 'scrooloose/nerdcommenter' "comments
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 " Plugin 'nvie/vim-flake8'
 " Plugin 'chrisbra/csv.vim'
 Plug 'junegunn/goyo.vim'

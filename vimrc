@@ -674,6 +674,31 @@ let g:limelight_conceal_ctermfg = 240
 " :YcmGenerateConfig or :CCGenerateConfig
 nnoremap <Leader>sh :SemanticHighlightToggle<cr>
 let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,16,125,124,19]
+
+" [ FZF ]
+" nnoremap <C-p> :FZF<cr>
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>t :Tags<CR>
+
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+" command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => FileType Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
