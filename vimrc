@@ -672,7 +672,8 @@ let g:limelight_conceal_ctermfg = 240
 " [ YCM-Generator ]
 " https://github.com/rdnetto/YCM-Generator
 " :YcmGenerateConfig or :CCGenerateConfig
-
+nnoremap <Leader>sh :SemanticHighlightToggle<cr>
+let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,16,125,124,19]
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => FileType Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -105,7 +105,8 @@ Plugin 'thoughtstream/Damian-Conway-s-Vim-Setup'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'junegunn/limelight.vim'
 Plugin 'rdnetto/YCM-Generator'
-
+Plugin 'jaxbot/semantic-highlight.vim'
+Plugin 'airblade/vim-gitgutter'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Local Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
