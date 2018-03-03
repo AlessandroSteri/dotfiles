@@ -21,9 +21,15 @@ main() {
         # mkdir -p $HOME/asDeveloper/$LOG
     # fi
 
-    # check how to check if is ok like other stuff
-    echo -n "[Xcode Command Line Tools] Installing..."
-    xcode-select --install && echo "installed: ✓"
+    if type xcode-select >&- && xpath=$( xcode-select --print-path ) &&
+        test -d "${xpath}" && test -x "${xpath}" ; then
+        #... is correctly installed
+        echo "Xcode Command Line Tools already installed"
+    else
+        #... isn't correctly installed
+        echo -n "[Xcode Command Line Tools] Installing..."
+        xcode-select --install && echo "installed: ✓"
+    fi
 
     # not working cause brew ask for a key to be pressed to start installing
     # > $HOME/asDeveloper/$LOG/brew.log.txt
@@ -122,17 +128,17 @@ main() {
 
 
     # TODO: to test
-    if [ -d $HOME/.dotfiles ]; then
-        mkdir -p dotfiles_old-$(date +%Y)-$(date +%D) >/dev/null
-        mv $HOME/.dotfiles $HOME/dotfiles_old-$(date +%Y)-$(date +%D) >/dev/null
-    fi
+    # if [ -d $HOME/.dotfiles ]; then
+    #     mkdir -p dotfiles_old-$(date +%Y)-$(date +%D) >/dev/null
+    #     mv $HOME/.dotfiles $HOME/dotfiles_old-$(date +%Y)-$(date +%D) >/dev/null
+    # fi
 
     echo -n "[Dotfiles][MyGitHub] cloning..."
     git clone https://github.com/AlessandroSteri/dotfiles.git $HOME/.dotfiles >/dev/null && echo "cloned: ✓"
 
-    echo "Backup existing dotfiles, stil have to handle dotfiles nested in folders"
+    echo "Backup existing dotfiles [still have to handle dotfiles nested in folders]"
 
-    ARGS='-x install.sh -x README.md -x header.png -x test -x ping_and_ip -x utils'
+    ARGS='-x install.sh -x README.md -x header.png -x test -x ping_and_ip -x utils -x make'
     CMD_LSRC=()
     CMD_LSRC=('lsrc' $ARGS)
 
@@ -207,6 +213,7 @@ main() {
     mas install 497799835 >/dev/null && echo "[APPSTORE][Xcode] installed: ✓"
 
     echo "[maybe not needed] maybe you need to manually open xcode before enter the pasword"
+    echo "Sets  the  active  developer  directory to the given path"
     sudo xcode-select -s /Applications/Xcode.app/Contents/Developer >/dev/null && echo "xcode-select: ✓"
     echo "should be enough not to need to open"
     sudo xcodebuild -license accept >/dev/null
@@ -227,8 +234,11 @@ main() {
 
     echo -n "[Telegram] Installing..."
     brew cask install telegram >/dev/null && echo "installed: ✓"
+
+    pip3 install telegram-send
+
     echo -n "[Alfred] Installing..."
-    brew cask install >/dev/null alfred
+    brew cask install alfred >/dev/null
 
     echo -n "[SYSTEM PREFERENCE] changing scroll direction to not natural..." #needs log out for the change to take affect.
     defaults write ~/Library/Preferences/.GlobalPreferences com.apple.swipescrolldirection -bool false && echo "changed: ✓"
@@ -246,8 +256,10 @@ main() {
 
     #da capire come lanciare in modo non interattivo e se funziona echo installed
     echo -n "[Vundle][PluginInstall] Installing..."
-    vim -u $HOME/.vimrc.bundles +PluginInstall +qall && echo "installed: ✓"
-    ~/.vim/bundle/YouCompleteMe/install.py --clang-completer >/dev/null
+    # Updated for vim plug
+    vim +PlugInstall +qall && echo "installed: ✓"
+    # ALready covered thru vim-plug
+    # ~/.vim/bundle/YouCompleteMe/install.py --clang-completer >/dev/null
 
     # SSH
     # Enabling SSH [syst - pref sharing - remote login]

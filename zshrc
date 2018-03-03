@@ -141,3 +141,5 @@ zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.o' '*.out' '*.log' '*.
 test -f $HOME/.zshrc.local && source $HOME/.zshrc.local
 #Syntax highlighting should be at the end
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
