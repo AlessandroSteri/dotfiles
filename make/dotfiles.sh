@@ -35,7 +35,7 @@ fi
 
 echo "Backup existing dotfiles still have to handle dotfiles nested in folders]"
 # Actually ok, already cloned repo
-ARGS='-x install.sh -x README.md -x header.png -x test -x ping_and_ip -x utils'
+ARGS='-x install.sh -x README.md -x header.png -x test -x ping_and_ip -x utils -x make'
 CMD_LSRC=()
 CMD_LSRC=('lsrc' $ARGS)
 
