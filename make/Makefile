@@ -13,7 +13,7 @@ xcode: zero
 zsh: zero
 	./zsh.sh
 
-brew: zsh
+brew: zero zsh
 	./brew.sh
 
 dotfiles: zero dir xcode
