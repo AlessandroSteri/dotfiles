@@ -54,7 +54,8 @@ CASKS=(
     google-chrome
     google-drive
     iterm2
-    macvim
+    # already in dotfiles
+    # macvim
     mactex
     telegram
     skim

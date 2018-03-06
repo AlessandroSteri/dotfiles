@@ -1,15 +1,9 @@
 #!bin/bash
 
-
-# if [ -d $HOME/.dotfiles ]; then
-   # echo "Already exist .dotfiles: backup old .dotfiles dir"
-   # mv $HOME/.dotfiles $HOME/dotfiles_old/dotfiles
-# fi
-
 if [ ! $(command_exists "rcup") ]; then
     echo -n "[Dotfiles][rcm] Installing..."
     brew tap thoughtbot/formulae >/dev/null
-    brew install rcm >/dev/null && echo "installed: ✓"
+    brew install rcm
 fi
 if [ -d $HOME/.dotfiles ]; then
     # Exist folder
@@ -39,11 +33,6 @@ ARGS='-x install.sh -x README.md -x header.png -x test -x ping_and_ip -x utils -
 CMD_LSRC=()
 CMD_LSRC=('lsrc' $ARGS)
 
-# if [ ! -d $HOME/dotfiles_old ]; then
-    # echo "creating dotfiles_old dir cause it doesen't exist"
-    # mkdir -p $HOME/dotfiles_old >/dev/null
-# fi
-
 for DOT_FILE in $(${CMD_LSRC[@]}); do
     # echo .$(basename $DOT_FILE)
     DOT_FILE_NAME=.$(basename $DOT_FILE)
@@ -51,7 +40,7 @@ for DOT_FILE in $(${CMD_LSRC[@]}); do
     # if exist
     if [ -f $HOME/$DOT_FILE_NAME ]; then
         echo "$DOT_FILE_NAME exists, moving into $HOME/dotfiles_old."
-        mv $HOME/$DOT_FILE_NAME $HOME/dotfiles_old >/dev/null
+        mv $HOME/$DOT_FILE_NAME $HOME/dotfiles_old
     else
         echo "New dotfile $DOT_FILE_NAME will be installed."
     fi
@@ -80,15 +69,10 @@ cp $HOME/asDeveloper/vim-colors-solarized/colors/solarized.vim $HOME/.vim/colors
 # VIM
 #############
 # needs xcode
-echo "[maybe not needed] maybe you need to manually open xcode before enter the pasword"
-# sudo xcode-select -s /Applications/Xcode.app/Contents/Developer >/dev/null && echo "xcode-select: ✓"
-echo "should be enough not to need to open"
-# sudo xcodebuild -license accept >/dev/null
-#must be after xcode, i know linkapp is deprecated
-echo -n "[macvim] Installing..."
-brew install macvim --with-override-system-vim >/dev/null && echo "installed: ✓"
+echo "[macvim] Installing..."
+brew install macvim --with-override-system-vim && echo "installed: ✓"
 #se non va perche deprecato prova: ln -s /usr/local/bin/mvim vim
-brew linkapps macvim >/dev/null && echo "macvim linked: ✓"
+brew linkapps macvim && echo "macvim linked: ✓"
 
 # Install vim plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

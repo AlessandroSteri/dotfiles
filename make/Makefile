@@ -1,7 +1,7 @@
 LN = ln -fFs
 RM = rm -rf
 MD = mkdir -p
-DOTFILES = $(wildcard .*)
+# DOTFILES = $(wildcard .*)
 # all: backup, ${HOME}/asDeveloper, ${HOME}/dotfiles_old, ${HOME}/.vim/colors
 
 zero:
@@ -13,7 +13,7 @@ xcode: zero
 zsh: zero
 	./zsh.sh
 
-brew: xcode zsh
+brew: zsh
 	./brew.sh
 
 dotfiles: zero dir xcode
