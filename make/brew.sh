@@ -71,13 +71,14 @@ FONTS=(
 )
 brew cask install ${FONTS[@]}
 
-# echo "Installing Python packages..."
-# PYTHON_PACKAGES=(
+echo "Installing Python packages..."
+PYTHON_PACKAGES=(
+    csvkit
 #     ipython
 #     virtualenv
 #     virtualenvwrapper
-# )
-# sudo pip install ${PYTHON_PACKAGES[@]}
+)
+sudo pip install ${PYTHON_PACKAGES[@]}
 
 echo "Installing Python3 packages..."
 PYTHON3_PACKAGES=(
