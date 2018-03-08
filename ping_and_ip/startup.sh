@@ -32,6 +32,6 @@ do
     telegram-send $IP
     telegram-send "ssh $WHO@$PING -v -p $PORT"
     # echo $(date +%H:%M:%S)
-    sleep 3600
+    sleep 7200
 done
 # telegram-send "PING: $PING,  IP: $IP"
