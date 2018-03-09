@@ -74,6 +74,9 @@ brew cask install ${FONTS[@]}
 echo "Installing Python packages..."
 PYTHON_PACKAGES=(
     csvkit
+    numpy
+    scipy
+    scikit-learn
 #     ipython
 #     virtualenv
 #     virtualenvwrapper
