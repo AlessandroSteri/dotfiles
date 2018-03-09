@@ -1,0 +1,5 @@
+# TODOES FOR DOTFILES AND SYS SETUP
+
+-LATEX
+    [ ] Add texmf ( my mgsnt package, how to setup custom folder inside dotfiles ecc.. )
+
