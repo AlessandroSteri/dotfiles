@@ -3,4 +3,5 @@
 -LATEX
     [ ] Add texmf ( my mgsnt package, how to setup custom folder inside dotfiles ecc.. )
     [ ] ~/.vim/ftplugin and file specific settings
-    [ ] set as default in zshrc prompt without spotify, than only on local in mbp add it
+    [x] set as default in zshrc prompt without spotify, than only on local in mbp add it
+    [ ]  zshrc.local to add tagged per macbookpro

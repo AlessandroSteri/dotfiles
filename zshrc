@@ -122,7 +122,7 @@ prompt_zsh_showStatus () {
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user root_indicator dir rbenv vcs dir_writable)
 
 #cutomize right prompt add:  time host
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ip zsh_showStatus) # history background_jobs  ip zsh_showStatus)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ip) # zsh_showStatus) # history background_jobs  ip zsh_showStatus)
 
 POWERLEVEL9K_CONTEXT_TEMPLATE="%n@`hostname -f`"
 
