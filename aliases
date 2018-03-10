@@ -62,8 +62,23 @@ alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl -
 # iterm2 notify on completion usage cmnd; notify
 alias notify="tput bel"
 
-#use brew ctag (exuberant) instead of BSD ctag  to allow -R flag
-alias ctags="`brew --prefix`/bin/ctags"
+#use brew ctag (exuberant) instead of BSD ctag  to allow -R flag but only for macOS
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        # ubuntu
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+        # Mac OSX
+    alias ctags="`brew --prefix`/bin/ctags"
+elif [[ "$OSTYPE" == "cygwin" ]]; then
+        # POSIX compatibility layer and Linux environment emulation for Windows
+elif [[ "$OSTYPE" == "msys" ]]; then
+        # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
+elif [[ "$OSTYPE" == "win32" ]]; then
+        # I'm not sure this can happen.
+elif [[ "$OSTYPE" == "freebsd"* ]]; then
+        # ...
+else
+        # Unknown.
+fi
 alias ctagsgenerate="ctags -R ."
 
 #cd to desktop

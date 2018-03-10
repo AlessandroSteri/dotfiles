@@ -5,3 +5,5 @@
     [ ] ~/.vim/ftplugin and file specific settings
     [x] set as default in zshrc prompt without spotify, than only on local in mbp add it
     [ ]  zshrc.local to add tagged per macbookpro
+    [ ] move source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    to asdev or home

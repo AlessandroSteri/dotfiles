@@ -1,24 +1,52 @@
 #!/bin/bash
 
 echo "UPDATE APT-GET"
-apt-get -qq update
+sudo apt-get -qq update
+
+sudo apt install wget
 
 echo "INSTALLING GIT"
-apt-get -qq --yes --force-yes git
+sudo apt-get install git
 
 echo "INSTALLING VIM"
-apt-get -qq --yes --force-yes vim
+sudo apt-get install vim
 
 echo "INSTALLING TMUX"
-apt-get -qq --yes --force-yes tmux
+sudo apt-get install tmux
 
 echo "INSTALLING ZSH"
-apt-get install zsh
-apt-get install git-core
+sudo apt-get install zsh
+sudo apt-get install git-core
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 chsh -s `which zsh`
 
+git clone https://github.com/AlessandroSteri/dotfiles.git ~/.dotfiles
+
+# Powerlevel9k
+# git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+# usa agnoster
+
+ln -fFs ~/.dotfiles/zshrc ~/.zshrc
+ln -fFs ~/.dotfiles/vimrc ~/.vimrc
+ln -fFs ~/.dotfiles/vimrc.bundles ~/.vimrc.bundles
+ln -fFs ~/.dotfiles/aliases ~/.aliases
+
+# SAUCECODE PRO NERD FONT
+# DISABLE CTAG BREW IN ALIAS
+
 #restart post zsh install
 sudo shutdown -r 0
+# Not Used
 # sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+
+# MAY BE USEFULL
+case "$OSTYPE" in
+  linux*)   echo "LINUX" ;;
+  darwin*)  echo "OSX" ;;
+  win*)     echo "Windows" ;;
+  cygwin*)  echo "Cygwin" ;;
+  bsd*)     echo "BSD" ;;
+  solaris*) echo "SOLARIS" ;;
+  *)        echo "unknown: $OSTYPE" ;;
+esac
