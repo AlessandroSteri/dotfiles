@@ -33,7 +33,7 @@ mkcd() { mkdir "$1" && cd "$1"; }
 #make new dir and change to new dir TODO: insert control, if only one arg print usage dirname filename
 mktc() { mkdir "$1" && cd "$1" && touch "$2" && cd ..; }
 
-commit() { git commit -m echo "$*" }
+commit() { git commit -m "$*" }
 
 #shortcut for parent of parent dir
 alias ...="../../"
