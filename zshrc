@@ -4,6 +4,8 @@
 # Path to your oh-my-zsh installation
 export ZSH=$HOME/.oh-my-zsh
 
+export PATH=$PATH":$HOME/.dotfiles/utils/custom_commands"
+
 
 # NERD fonts
 
