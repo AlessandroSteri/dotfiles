@@ -115,7 +115,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'jaxbot/semantic-highlight.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'vitalk/vim-simple-todo'
+Plug 'vitalk/vim-simple-todo', { 'for': 'text' }
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Local Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
