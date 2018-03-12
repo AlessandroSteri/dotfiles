@@ -469,7 +469,7 @@ endif
 " => Spell checking - TODO
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pressing ,ss will toggle and untoggle spell checking
-" map <leader>ss :setlocal spell!<cr>
+noremap <leader>sc :setlocal spell!<cr>
 
 " Shortcuts using <leader>
 " map <leader>sn ]s
