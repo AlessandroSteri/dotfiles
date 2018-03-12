@@ -415,6 +415,10 @@ inoremap jk <esc>
 inoremap kj <esc>
 
 
+" Avoid override yank buffer when changing
+nnoremap c "_c
+vnoremap c "_c
+
 " " Move a line of text using ALT+[jk] or Command+[jk] on mac i wish but it doesn't work
 " nmap <M-j> mz:m+<cr>`z
 " nmap <M-k> mz:m-2<cr>`z
