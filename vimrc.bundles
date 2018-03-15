@@ -116,6 +116,7 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'jaxbot/semantic-highlight.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'vitalk/vim-simple-todo', { 'for': 'text' }
+Plug 'christoomey/vim-titlecase'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Local Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
