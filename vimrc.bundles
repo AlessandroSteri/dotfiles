@@ -117,6 +117,9 @@ Plug 'jaxbot/semantic-highlight.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'vitalk/vim-simple-todo', { 'for': 'text' }
 Plug 'christoomey/vim-titlecase'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'ervandew/supertab'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Local Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
