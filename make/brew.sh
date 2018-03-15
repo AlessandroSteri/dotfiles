@@ -77,6 +77,7 @@ PYTHON_PACKAGES=(
     numpy
     scipy
     scikit-learn
+    matplotlib
 #     ipython
 #     virtualenv
 #     virtualenvwrapper
