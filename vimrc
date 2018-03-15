@@ -559,6 +559,14 @@ let g:vimtex_compiler_latexmk = {'callback' : 0}
 "shortcut for see preview
 "  map § <Leader>lv
 
+" Overleaf update preview -> you must clone the repo and be in the repo folder
+nnoremap <silent> <Leader>ov :call OverleafPreview()<cr>
+function! OverleafPreview()
+    :w
+    :Gwrite
+    :Gcommit -m "_ONSAVE_"
+    :Gpush origin master
+endfunc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins Settings
