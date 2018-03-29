@@ -33,7 +33,7 @@ backup:
 
 dir: ${HOME}/asDeveloper ${HOME}/.vim/colors ${HOME}/dotfiles_old
 
-apps: xcode
+apps: xcode zero brew
 	./apps.sh
 
 try:

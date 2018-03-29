@@ -22,9 +22,12 @@ PACKAGES=(
     cmake
     ctags
     git
+    mercurial
+    npm
     python
     python3
     reattach-to-user-namespace
+    smlnj
     the_silver_searcher
     tmate
     tmux
@@ -77,7 +80,11 @@ PYTHON_PACKAGES=(
     numpy
     scipy
     scikit-learn
+    tqdm
     matplotlib
+    pylint
+    sklearn
+    yapf
 #     ipython
 #     virtualenv
 #     virtualenvwrapper
@@ -90,6 +97,10 @@ PYTHON3_PACKAGES=(
 )
 sudo pip3 install ${PYTHON3_PACKAGES[@]}
 
+EASYINSTALL=(
+    ipdb
+)
+sudo easy_install ${EASYINSTALL[@]}
 # echo "Installing Ruby gems"
 # RUBY_GEMS=(
 #     bundler

@@ -21,6 +21,8 @@
   autocrlf = input
 [merge]
   ff = only
+	tool = vimdiff
+	conflictstyle = diff3
 [include]
   path = .gitconfig.local
 [commit]

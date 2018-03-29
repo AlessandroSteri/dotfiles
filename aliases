@@ -6,6 +6,15 @@
 #ls on every cd
 cs() { cd "$1" && ls; }
 
+# List everything is not a directory
+alias lf='ls -p | grep -v /'
+
+# List only directories
+alias ld='ls -d */'
+
+# Show sub-directories  size
+alias dirsz='du -sh */'
+
 #sudo for super fast sudo latest cmd with S !!
 alias S='sudo'
 

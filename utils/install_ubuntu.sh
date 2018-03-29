@@ -26,6 +26,8 @@ git clone https://github.com/AlessandroSteri/dotfiles.git ~/.dotfiles
 # git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 # usa agnoster
 
+sudo easy_install3 ipdb
+
 ln -fFs ~/.dotfiles/zshrc ~/.zshrc
 ln -fFs ~/.dotfiles/vimrc ~/.vimrc
 ln -fFs ~/.dotfiles/vimrc.bundles ~/.vimrc.bundles

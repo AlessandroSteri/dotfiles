@@ -7,3 +7,5 @@
     [ ]  zshrc.local to add tagged per macbookpro
     [ ] move source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     to asdev or home
+    [ ] add .ssh/config to dotfiles
+[ ]  pdbrc aggiungilo a dotfiles

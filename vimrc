@@ -384,6 +384,21 @@ let g:airline#extensions#whitespace#enabled = 0
 " Enable w0rp/ale extension for airline
 let g:airline#extensions#ale#enabled = 1
 
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
+
+set statusline=%{LinterStatus()}
+
 " use tabline from airline - currently i use a specific plugin
 " let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#tabline#left_sep = ' '
@@ -571,6 +586,7 @@ endfunc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <Leader>pi :PlugInstall<cr>
 
 " Fugitive
 nnoremap <silent> <Leader>gs :Gstatus<CR>
@@ -595,12 +611,12 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-" configure syntastic syntax checking to check on open as well as save
-let g:syntastic_ruby_checkers = ['mri']
-let g:syntastic_enable_highlighting=0
-let g:syntastic_check_on_open = 1
-
-let g:syntastic_c_include_dirs = [ '/Users/alessandrosteri/mclab/devenv/lib/mclabutils/include', 'include', '../include', '/Users/alessandrosteri/mclab/jmodelica/jmodelica.org/RuntimeLibrary/src/fmi2', '/Users/alessandrosteri/mclab/jmodelica/jmodelica.org/build/FMIL_install/include/FMI2', '/Users/alessandrosteri/mclab/jmodelica/jmodelica.org/RuntimeLibrary/src/jmi' ]
+" " configure syntastic syntax checking to check on open as well as save
+" let g:syntastic_ruby_checkers = ['mri']
+" let g:syntastic_enable_highlighting=0
+" let g:syntastic_check_on_open = 1
+"
+" let g:syntastic_c_include_dirs = [ '/Users/alessandrosteri/mclab/devenv/lib/mclabutils/include', 'include', '../include', '/Users/alessandrosteri/mclab/jmodelica/jmodelica.org/RuntimeLibrary/src/fmi2', '/Users/alessandrosteri/mclab/jmodelica/jmodelica.org/build/FMIL_install/include/FMI2', '/Users/alessandrosteri/mclab/jmodelica/jmodelica.org/RuntimeLibrary/src/jmi' ]
 
 "NERDTree
 ":pwd show current working directory
@@ -640,6 +656,12 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_text_changed = 'always'
+
+" let g:ale_fixers = {'python': ['autopep8', 'isort', 'remove_trailing_lines', 'trim_whitespace']}
+
+
 " Undotree
 nnoremap <F5> :UndotreeToggle<cr>
 
@@ -674,12 +696,12 @@ vmap  <expr>  <UP>     DVB_Drag('up')
 vmap  <expr>  D        DVB_Duplicate()
 "
 
-" [ limelight ]
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-" Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
+" " [ limelight ] - forse sposta solo su file tex
+" autocmd! User GoyoEnter Limelight
+" autocmd! User GoyoLeave Limelight!
+" " Color name (:help cterm-colors) or ANSI code
+" let g:limelight_conceal_ctermfg = 'gray'
+" let g:limelight_conceal_ctermfg = 240
 
 " [ YCM-Generator ]
 " https://github.com/rdnetto/YCM-Generator
@@ -722,6 +744,12 @@ let  g:SuperTabDefaultCompletionType    = '<C-n>'
 let g:UltiSnipsExpandTrigger       = "<tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+
+noremap <leader>bo :ToggleBool<CR>
+
+" export code in html with ugly colors
+" map <F2> :TOhtml<enter>:wq<enter>:n<enter><F2>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => FileType Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -736,13 +764,24 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 "Set Whitespace Settings For Python Related Files
 augroup setup_whitespace
-  au filetype python   setl ts=4 sw=4 sts=4 tw=80 et
-augroup end
-" Warns When Text Width Exceeds Predefined Width In Python Files
-augroup exceeded_text_width
-  au filetype python match ErrorMsg '\%>80v.\+'
+  au filetype python   setl ts=4 sw=4 sts=4 et
 augroup end
 
+"[YAPF]
+"reformatting can be performed with the gq{motion} and reformat the whole file with gg=G or a single line or selection with =
+autocmd FileType python setlocal equalprg=yapf
+let g:yapf_style = "pep8"
+" let g:yapf_style = "google"
+
+" Warns When Text Width Exceeds Predefined Width In Python Files - commentato temporaneamente per progenno nlp
+" augroup exceeded_text_width
+"   au filetype python match ErrorMsg '\%>80v.\+'
+" augroup end
+
+" [PYMODE]
+" avoid autofold all on .py opening, may limit folding functionalities of pymode, doublecheck
+let g:pymode_folding = 0
+let g:pymode_python = 'python3'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Local Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
