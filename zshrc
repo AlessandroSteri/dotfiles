@@ -20,6 +20,7 @@ if [[ -n $SSH_CONNECTION ]]; then
   export HOST=``
 else
   ZSH_THEME="powerlevel9k/powerlevel9k"
+  DEFAULT_USER=$(whoami)
 fi
 
 
@@ -27,7 +28,6 @@ fi
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
-DEFAULT_USER=$(whoami)
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -137,7 +137,7 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # ZSH Autocompletion
-zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.o' '*.out' '*.log' '*.toc' '*.aux' '*.bbl' '*.pdf' '*.fdb_latexmk' '*.fls' '*.synctex.gz' '*.swp' '*.swo' '*.tdo'
+zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.o' '*.out' '*.log' '*.toc' '*.aux' '*.bbl' '*.pdf' '*.fdb_latexmk' '*.fls' '*.synctex.gz' '*.swp' '*.swo' '*.tdo' '*.pyc'
 
 # Allow for local configuration
 test -f $HOME/.zshrc.local && source $HOME/.zshrc.local

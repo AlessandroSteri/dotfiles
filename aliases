@@ -24,6 +24,9 @@ alias src='source ~/.zshrc'
 #spotify
 alias s='spotify'
 
+#spotify
+alias h='hostname'
+
 #alias for common dotfiles
 alias cddot='cd ~/.dotfiles'
 alias vimrc='vim ~/.vimrc'
@@ -32,6 +35,7 @@ alias zshrc='vim ~/.zshrc'
 alias tmuxconf='vim ~/.tmux.conf'
 alias altvim='vim -u ~/Desktop/BACKUP\ VIMRC/vimrc'
 alias aliases='vim ~/.aliases'
+alias sshconf='vim .ssh/config'
 
 # Easy share tmate connection
 tmateconnect() { tmate display -p '#{tmate_ssh}' | telegram-send --stdin; }
