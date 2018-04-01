@@ -17,7 +17,7 @@ if [[ -n $SSH_CONNECTION ]]; then
   echo "SSH session, using agnoster theme"
   ZSH_THEME="agnoster"
   export USER=``
-  export HOST=``
+  # export HOST=``
 else
   ZSH_THEME="powerlevel9k/powerlevel9k"
   DEFAULT_USER=$(whoami)
