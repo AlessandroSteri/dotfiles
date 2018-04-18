@@ -54,6 +54,7 @@ CASKS=(
     # already in dotfiles
     # macvim
     mactex
+    task-spooler
     telegram
     skim
     skype
