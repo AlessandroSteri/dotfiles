@@ -99,6 +99,7 @@ sudo pip3 install ${PYTHON3_PACKAGES[@]}
 
 EASYINSTALL=(
     ipdb
+    pudb
 )
 sudo easy_install ${EASYINSTALL[@]}
 # echo "Installing Ruby gems"

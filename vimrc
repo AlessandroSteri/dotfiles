@@ -93,8 +93,9 @@ augroup myvimrc
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
 
-
-
+set list
+set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
+" set nolist
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim UI/UX 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -209,8 +210,9 @@ highlight LineNr ctermfg=grey
 try
     let g:solarized_termtrans = 1
     colorscheme solarized
+    " colorscheme vim-wwdc16-theme
     " colorscheme solarized8
-    " colorscheme gruvbox
+    colorscheme gruvbox
 catch
 endtry
 
@@ -374,6 +376,7 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
+" let g:airline_theme='gruvbox'
 " let g:airline_theme='solarized'
 "
 " Don't counts whitespsces as errors
@@ -757,7 +760,7 @@ noremap <leader>bo :ToggleBool<CR>
 " Execute bash script from within vim
 map <Leader>` :w !bash <CR>
 " Execute python script from within vim
-map <Leader>~ :w !python <CR>
+map <Leader>~ :w !python3 <CR>
 
 " Set syntax highlighting for specific file types
 autocmd BufRead,BufNewFile *.md set filetype=markdown

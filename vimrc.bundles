@@ -124,7 +124,8 @@ Plug 'gorkunov/smartpairs.vim'
 Plug 'fs111/pydoc.vim'
 Plug 'sagarrakshe/toggle-bool'
 Plug 'mindriot101/vim-yapf', { 'for': 'python' }
-
+Plug 'lifepillar/vim-wwdc16-theme'
+" Plug 'wilywampa/vim-ipython'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Local Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

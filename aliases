@@ -37,6 +37,14 @@ alias altvim='vim -u ~/Desktop/BACKUP\ VIMRC/vimrc'
 alias aliases='vim ~/.aliases'
 alias sshconf='vim .ssh/config'
 
+
+# Tmux
+alias ta='tmux attach'
+alias td='tmux detach'
+alias tls='tmux list-session'
+
+#Quicklook
+alias qlf='qlmanage -p'
 # Easy share tmate connection
 tmateconnect() { tmate display -p '#{tmate_ssh}' | telegram-send --stdin; }
 
