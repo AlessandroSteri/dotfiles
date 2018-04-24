@@ -23,6 +23,10 @@ else
   DEFAULT_USER=$(whoami)
 fi
 
+# auto tmux if over ssh
+if [[ -z "$TMUX"  ]] && [ "$SSH_CONNECTION" != ""  ]; then
+    tmux attach-session -t main || tmux new-session -s main
+fi
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.

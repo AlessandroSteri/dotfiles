@@ -39,7 +39,8 @@ alias sshconf='vim .ssh/config'
 
 
 # Tmux
-alias ta='tmux attach'
+# alias ta='tmux attach'
+alias ta='tmux attach-session -t main || tmux new-session -s main'
 alias td='tmux detach'
 alias tls='tmux list-session'
 
