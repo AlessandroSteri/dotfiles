@@ -785,6 +785,10 @@ let g:yapf_style = "pep8"
 " avoid autofold all on .py opening, may limit folding functionalities of pymode, doublecheck
 let g:pymode_folding = 0
 let g:pymode_python = 'python3'
+let g:pymode_lint = 1
+" Check code when editing (on the fly)
+let g:pymode_lint_on_fly = 0
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Local Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -100,6 +100,7 @@ Plug 'jiangmiao/auto-pairs'
 " Plug 'tell-k/vim-autopep8' " seems to work only with python 2.7
 " Plugin 'nelstrom/vim-visual-star-search'
 " Plug 'klen/python-mode'
+Plug 'python-mode/python-mode', { 'branch': 'develop'  }
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'mkitt/tabline.vim'
@@ -122,7 +123,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'vim-scripts/vim-auto-save', { 'for': 'tex' }
 Plug 'gorkunov/smartpairs.vim'
 Plug 'fs111/pydoc.vim'
-Plug 'sagarrakshe/toggle-bool'
+" Plug 'sagarrakshe/toggle-bool'
 Plug 'mindriot101/vim-yapf', { 'for': 'python' }
 Plug 'lifepillar/vim-wwdc16-theme'
 " Plug 'wilywampa/vim-ipython'
