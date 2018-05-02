@@ -108,7 +108,7 @@ Plug 'mkitt/tabline.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
-Plug 'thoughtstream/Damian-Conway-s-Vim-Setup'
+" Plug 'thoughtstream/Damian-Conway-s-Vim-Setup'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/limelight.vim'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
