@@ -10,6 +10,8 @@ sudo apt-get install git
 
 echo "INSTALLING PYTHON3"
 sudo apt install python3
+sudo apt-get install python3-setuptools
+sudo apt-get install python3-pip
 
 echo "INSTALLING VIM"
 sudo apt-get install vim
