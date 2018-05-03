@@ -16,6 +16,7 @@
   up = !git fetch origin && git rebase origin/master
   undo = reset HEAD~
   pom = push origin master
+  untrack = rm --cached
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
