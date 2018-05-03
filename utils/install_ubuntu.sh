@@ -8,6 +8,8 @@ sudo apt-get install curl #if not vimplug is not autoinstallable hence vim do no
 
 echo "REMAP CAPS-LOCK TO CTRL"
 setxkbmap -layout us -option ctrl:nocaps
+echo "KEY DELAY AND SPEED"
+xset r rate 200 80 #higher delay slower, higer speed faster
 
 
 echo "INSTALLING GIT"
