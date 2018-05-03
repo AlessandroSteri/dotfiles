@@ -21,6 +21,9 @@ sudo apt-get install task-spooler
 echo "INSTALLING VIM"
 sudo apt-get install vim
 
+echo "ENABLE SSH"
+sudo apt-get install openssh-server
+
 echo "INSTALLING TMUX"
 sudo apt-get install tmux
 
