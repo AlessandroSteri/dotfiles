@@ -38,6 +38,7 @@ ln -fFs ~/.dotfiles/zshrc ~/.zshrc
 ln -fFs ~/.dotfiles/vimrc ~/.vimrc
 ln -fFs ~/.dotfiles/vimrc.bundles ~/.vimrc.bundles
 ln -fFs ~/.dotfiles/aliases ~/.aliases
+ln -fFs ~/.dotfiles/utils/zshrc.ubuntu ~/.zshrc.local
 
 # SAUCECODE PRO NERD FONT
 
