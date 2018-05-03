@@ -47,7 +47,9 @@ ln -fFs ~/.dotfiles/aliases ~/.aliases
 ln -fFs ~/.dotfiles/utils/zshrc.ubuntu ~/.zshrc.local
 ln -fFs ~/.dotfiles/tmux.conf ~/.tmux.conf # make sure to run prefix + I to install plugins
 # comment this line from tmux.conf: set-option -g default-command "reattach-to-user-namespace -l zsh"
-
+ln -fFs ~/.dotfiles/gitconfig ~/.gitconfig
+ln -fFs ~/.dotfiles/gitignore ~/.gitingore
+ln -fFs ~/.dotfiles/gitmessage ~/.gitmessage
 
 
 # SAUCECODE PRO NERD FONT
