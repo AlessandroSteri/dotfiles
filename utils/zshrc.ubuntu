@@ -1,2 +1,4 @@
 ZSH_THEME="agnoster"
 alias ts='tsp'
+# added by me case Miniconda3 installer does it only for bashrc
+export PATH="/home/ale/anaconda3/bin:$PATH"
