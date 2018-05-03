@@ -8,6 +8,9 @@ sudo apt install wget
 echo "INSTALLING GIT"
 sudo apt-get install git
 
+echo "INSTALLING PYTHON3"
+sudo apt install python3
+
 echo "INSTALLING VIM"
 sudo apt-get install vim
 
