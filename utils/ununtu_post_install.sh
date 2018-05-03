@@ -6,5 +6,5 @@
 
 
 #tensorflow gpu https://github.com/markjay4k/Install-Tensorflow-on-Ubuntu-17.10-/blob/master/Tensorflow%20Install%20instructions.ipynb
-
+# video: https://www.youtube.com/watch?v=vxjbL5iN1XY
 #todo migliora fonts, torna a sauce code pro nerd font che better tmux over ssh
