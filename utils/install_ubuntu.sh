@@ -6,6 +6,10 @@ sudo apt-get -qq update
 sudo apt install wget
 sudo apt-get install curl #if not vimplug is not autoinstallable hence vim do not work
 
+echo "REMAP CAPS-LOCK TO CTRL"
+setxkbmap -layout us -option ctrl:nocaps
+
+
 echo "INSTALLING GIT"
 sudo apt-get install git
 
