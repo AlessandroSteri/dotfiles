@@ -23,6 +23,16 @@ else
   DEFAULT_USER=$(whoami)
 fi
 
+case "$OSTYPE" in
+  linux*)   ZSH_THEME="agnoster" ;;
+# darwin*)  echo "OSX" ;;
+# win*)     echo "Windows" ;;
+# cygwin*)  echo "Cygwin" ;;
+# bsd*)     echo "BSD" ;;
+# solaris*) echo "SOLARIS" ;;
+# *)        echo "unknown: $OSTYPE" ;;
+esac
+
 # auto tmux if over ssh
 if [[ -z "$TMUX"  ]] && [ "$SSH_CONNECTION" != ""  ]; then
     tmux attach-session -t main || tmux new-session -s main
