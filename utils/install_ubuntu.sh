@@ -40,13 +40,26 @@ ln -fFs ~/.dotfiles/vimrc.bundles ~/.vimrc.bundles
 ln -fFs ~/.dotfiles/aliases ~/.aliases
 
 # SAUCECODE PRO NERD FONT
-# DISABLE CTAG BREW IN ALIAS
+
+# Install vim plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    
+# get ready to compile YCM
+sudo apt-get install python-dev python3-dev #do not put before vim, may compile vim with python2
+sudo apt-get install build-essential cmake
+sudo apt-get install build-essential cmake3
+
+vim +PluginInstall +qall && echo "installed: ✓"
 
 #restart post zsh install
 sudo shutdown -r 0
 # Not Used
 # sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+#if compile ycm fails:
+#cd ~/.vim/bundle/YouCompleteMe
+#./install.py --clang-completer
 
 # MAY BE USEFULL
 case "$OSTYPE" in
