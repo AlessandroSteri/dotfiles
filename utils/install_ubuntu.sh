@@ -44,6 +44,7 @@ ln -fFs ~/.dotfiles/vimrc.bundles ~/.vimrc.bundles
 ln -fFs ~/.dotfiles/aliases ~/.aliases
 ln -fFs ~/.dotfiles/utils/zshrc.ubuntu ~/.zshrc.local
 ln -fFs ~/.dotfiles/tmux.conf ~/.tmux.conf # make sure to run prefix + I to install plugins
+# comment this line from tmux.conf: set-option -g default-command "reattach-to-user-namespace -l zsh"
 
 
 
