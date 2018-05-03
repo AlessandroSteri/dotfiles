@@ -14,6 +14,10 @@ sudo apt install python3
 sudo apt-get install python3-setuptools
 sudo apt-get install python3-pip
 
+#install scheduler
+echo "INSTALLING TASK-SPOOLER"
+sudo apt-get install task-spooler
+
 echo "INSTALLING VIM"
 sudo apt-get install vim
 
