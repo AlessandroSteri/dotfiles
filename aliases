@@ -35,7 +35,7 @@ alias zshrc='vim ~/.zshrc'
 alias tmuxconf='vim ~/.tmux.conf'
 alias altvim='vim -u ~/Desktop/BACKUP\ VIMRC/vimrc'
 alias aliases='vim ~/.aliases'
-alias sshconf='vim .ssh/config'
+alias sshconf='vim ~/.ssh/config'
 
 
 # Tmux

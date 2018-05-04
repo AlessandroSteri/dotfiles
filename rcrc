@@ -1,0 +1,2 @@
+EXCLUDES="install.sh README.md header.png test ping_and_ip utils make"
+DOTFILES_DIRS="$HOME/.dotfiles"

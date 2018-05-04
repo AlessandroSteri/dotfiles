@@ -1,0 +1,32 @@
+ForwardAgent yes
+
+
+Host techna
+User steri
+Hostname techna.rm.ingv.it
+
+
+Host imac
+User AlessandroSteri
+Hostname asdev.ddnspro.org
+Port 96
+
+Host mbp
+User AlessandroSteri
+Hostname asdev.ddnspro.org
+Port 97
+
+Host ub
+User ale
+Hostname asdev.ddnspro.org
+Port 98
+
+Host mini
+User FrancescoSteri
+Hostname asdev.ddnspro.org
+Port 99
+
+Host pi
+User pi
+Hostname asdev.ddnspro.org
+Port 95
