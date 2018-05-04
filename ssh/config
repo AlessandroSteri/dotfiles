@@ -1,10 +1,8 @@
 ForwardAgent yes
 
-
 Host techna
 User steri
 Hostname techna.rm.ingv.it
-
 
 Host imac
 User AlessandroSteri
