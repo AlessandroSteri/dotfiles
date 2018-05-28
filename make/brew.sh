@@ -95,6 +95,7 @@ sudo pip install ${PYTHON_PACKAGES[@]}
 echo "Installing Python3 packages..."
 PYTHON3_PACKAGES=(
     telegram-send
+    gensim
 )
 sudo pip3 install ${PYTHON3_PACKAGES[@]}
 
