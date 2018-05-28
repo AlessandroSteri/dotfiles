@@ -17,6 +17,7 @@
   undo = reset HEAD~
   pom = push origin master
   untrack = rm --cached
+  remoteurl = config --get remote.origin.url
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input

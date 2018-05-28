@@ -34,6 +34,7 @@ call plug#begin('~/.vim/bundle')
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
 " Plugin 'tpope/vim-projectionist'
 " Plugin 'mustache/vim-mustache-handlebars'
 Plug 'blarghmatey/split-expander'
@@ -101,6 +102,7 @@ Plug 'jiangmiao/auto-pairs'
 " Plugin 'nelstrom/vim-visual-star-search'
 " Plug 'klen/python-mode'
 Plug 'python-mode/python-mode', { 'branch': 'develop'  }
+" Plug 'davidhalter/jedi-vim'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'mkitt/tabline.vim'

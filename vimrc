@@ -785,9 +785,12 @@ let g:yapf_style = "pep8"
 " avoid autofold all on .py opening, may limit folding functionalities of pymode, doublecheck
 let g:pymode_folding = 0
 let g:pymode_python = 'python3'
-let g:pymode_lint = 1
+" let g:pymode_lint = 1
+noremap <leader>n :PymodeLint<CR>
 " Check code when editing (on the fly)
 let g:pymode_lint_on_fly = 0
+let g:pymode_lint_on_write = 0
+let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace()  # TODO BREAKPOINT'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Local Settings
