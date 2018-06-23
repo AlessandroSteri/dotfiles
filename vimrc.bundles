@@ -118,7 +118,7 @@ Plug 'jaxbot/semantic-highlight.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'vitalk/vim-simple-todo', { 'for': 'text' }
 Plug 'christoomey/vim-titlecase'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'
@@ -129,6 +129,7 @@ Plug 'fs111/pydoc.vim'
 Plug 'mindriot101/vim-yapf', { 'for': 'python' }
 Plug 'lifepillar/vim-wwdc16-theme'
 " Plug 'wilywampa/vim-ipython'
+Plug 'brooth/far.vim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Local Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

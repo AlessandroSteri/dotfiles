@@ -765,6 +765,11 @@ map <Leader>~ :w !python3 <CR>
 " Set syntax highlighting for specific file types
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 
+" Set syntax highlighting for specific file types, it just look better since no custom syntax is available
+autocmd BufRead,BufNewFile *.prism set syntax=c
+
+" Set syntax highlighting for specific file types, it just look better since no custom syntax is available
+autocmd BufRead,BufNewFile *.pctl set syntax=c
 "Set Whitespace Settings For Python Related Files
 augroup setup_whitespace
   au filetype python   setl ts=4 sw=4 sts=4 et

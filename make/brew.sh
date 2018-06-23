@@ -22,6 +22,7 @@ PACKAGES=(
     cmake
     ctags
     git
+    git-extras
     mercurial
     npm
     python
@@ -82,6 +83,7 @@ PYTHON_PACKAGES=(
     scipy
     scikit-learn
     tqdm
+    trash-cli
     matplotlib
     pylint
     sklearn
