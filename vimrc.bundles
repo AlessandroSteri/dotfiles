@@ -130,6 +130,7 @@ Plug 'mindriot101/vim-yapf', { 'for': 'python' }
 Plug 'lifepillar/vim-wwdc16-theme'
 " Plug 'wilywampa/vim-ipython'
 Plug 'brooth/far.vim'
+Plug 'chrisbra/csv.vim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Local Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -49,6 +49,17 @@ brew install caskroom/cask/brew-cask
 CASKS=(
     alfred
     firefox
+    coreutils
+    findutils
+    gawk
+    # gnu stuff
+    gnu-tar
+    gnu-sed
+    gnutls
+    gnu-indent
+    gnu-getopt
+    gnu-time
+    # end gnu stuff
     google-chrome
     google-drive
     iterm2
