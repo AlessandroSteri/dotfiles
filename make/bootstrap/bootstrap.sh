@@ -1,5 +1,7 @@
-#!bin/bash
+#!/usr/bin/env bash
 
+
+# make the all thing very fast and idempotent
 echo -n [Detecting OS] ..
 
 case "$OSTYPE" in
@@ -7,7 +9,7 @@ case "$OSTYPE" in
       echo "LINUX"
       ;;
   darwin*)
-      echo "OSX"
+      echo "MacOS"
       sh ./osx_bootstrap.sh
       ;;
   win*)

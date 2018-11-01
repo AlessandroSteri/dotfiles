@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# RUN MATLAB WITH NO GUI
+bash /Applications/MATLAB_R2018b.app/bin/matlab -nodesktop -nosplash

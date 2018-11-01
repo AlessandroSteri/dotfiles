@@ -30,8 +30,8 @@
 [commit]
 	template = ~/.gitmessage
 [user]
-	name = Alessandro Steri
-	email = alessandro.steri@gmail.com
+	name = Alessandro
+	email = steri.1356261@studenti.uniroma1.it
 	username = AlessandroSteri
 [diff]
     tool = vimdiff
@@ -40,8 +40,9 @@
 [hub]
 protocol = https
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 	required = true
 [credential]
 	helper = osxkeychain

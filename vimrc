@@ -192,7 +192,7 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
  map <silent> <Leader><Space> :noh<CR>
 
 " Replace current selection
-:nnoremap <Leader>r :%s/\<<C-r><C-w>\>/
+:nnoremap <Leader>R :%s/\<<C-r><C-w>\>/
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -796,6 +796,11 @@ noremap <leader>n :PymodeLint<CR>
 let g:pymode_lint_on_fly = 0
 let g:pymode_lint_on_write = 0
 let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace()  # TODO BREAKPOINT'
+
+
+"TAB SEPARATED FILES
+"expand tabs to 10 to make readable tab separated files
+nmap <leader>tab :set noexpandtab tabstop=10<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Local Settings

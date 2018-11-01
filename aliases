@@ -114,5 +114,10 @@ alias cdd="cd ~/Desktop"
 alias :w="echo this isn\'t vim!"
 alias :q='exit'
 
+
+#SCREEN: for vim - REPL integration using vim-slime
+alias spython="screen -S python -m sh -c \"ipython\" "
+alias smatlab="screen -S matlab -m sh -c \"matlab -nosplash -nodesktop\""
+
 # Allow for local aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
