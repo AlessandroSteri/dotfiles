@@ -1,3 +1,7 @@
+command_exists () {
+    type "$1" &> /dev/null ;
+}
+
 install_title() {
 	read -r -p "Do you want to update $1? [y/N] " response
 	if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
