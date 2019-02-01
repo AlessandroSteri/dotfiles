@@ -73,7 +73,8 @@ alias mgsnt="~/asDeveloper/texmf/tex/mgsnt/mgsnt.sh"
 # alias e="mvim -v"
 
 #fast alias, -p opens one tab for each file
-alias v="vim -p"
+# alias v="vim -p"
+alias v="nvim -p"
 
 #open vim read only
 alias vr="vim -R"
