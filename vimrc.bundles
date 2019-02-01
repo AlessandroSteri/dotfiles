@@ -44,7 +44,6 @@ Plug 'sjl/vitality.vim'
 Plug 'kien/ctrlp.vim'
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run install script
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 " Plugin 'janko-m/vim-test'
 " Plugin 'tpope/vim-bundler'
 " Plugin 'ecomba/vim-ruby-refactoring'
@@ -101,7 +100,28 @@ Plug 'jiangmiao/auto-pairs'
 " Plug 'tell-k/vim-autopep8' " seems to work only with python 2.7
 " Plugin 'nelstrom/vim-visual-star-search'
 " Plug 'klen/python-mode'
-Plug 'python-mode/python-mode', { 'branch': 'develop'  }
+
+" Plug 'python-mode/python-mode', { 'branch': 'develop'  }
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+set runtimepath+=~/.vim-plugins/LanguageClient-neovim
+
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ }
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
 " Plug 'davidhalter/jedi-vim'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
@@ -129,21 +149,19 @@ Plug 'fs111/pydoc.vim'
 Plug 'mindriot101/vim-yapf', { 'for': 'python' }
 Plug 'lifepillar/vim-wwdc16-theme'
 " Plug 'wilywampa/vim-ipython'
+" Plug 'ivanov/vim-ipython'
 Plug 'brooth/far.vim'
 Plug 'chrisbra/csv.vim'
 
 Plug 'jpalardy/vim-slime'
 
 " " Matlab
-" Plug 'daeyun/vim-matlab'
+" Plug 'raingo/vim-matlab'
 
-Plug 'raingo/vim-matlab'
-
-" function! DoRemote(arg)
-"   UpdateRemotePlugins
-" endfunction
-"
-" Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') }
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') }
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

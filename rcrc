@@ -1,2 +1,2 @@
-EXCLUDES="install.sh README.md header.png test ping_and_ip utils make"
+EXCLUDES="install.sh README.md header.png test ping_and_ip utils make new_dot_file_add_nvim_python.sh"
 DOTFILES_DIRS="$HOME/.dotfiles"
