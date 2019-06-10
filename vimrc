@@ -209,10 +209,14 @@ endif
 highlight LineNr ctermfg=grey
 try
     let g:solarized_termtrans = 1
-    colorscheme solarized
+    " colorscheme solarized
     " colorscheme vim-wwdc16-theme
-    " colorscheme solarized8
-    colorscheme gruvbox
+    colorscheme solarized8
+    " let g:gruvbox_contrast_dark = "soft"
+    " colorscheme gruvbox
+    " colorscheme molokai
+    " let g:molokai_original = 1
+    " colorscheme snazzy
 catch
 endtry
 
@@ -378,6 +382,7 @@ endif
 let g:airline_symbols.space = "\ua0"
 " let g:airline_theme='gruvbox'
 " let g:airline_theme='solarized'
+let g:airline_theme='dracula'
 "
 " Don't counts whitespsces as errors
 let g:airline#extensions#whitespace#enabled = 0
@@ -788,7 +793,7 @@ let g:yapf_style = "pep8"
 
 " [PYMODE]
 " avoid autofold all on .py opening, may limit folding functionalities of pymode, doublecheck
-let g:pymode_folding = 0
+let g:pymode_folding = 1
 " let g:pymode_python = 'python3'
 " let g:pymode_lint = 1
 noremap <leader>n :PymodeLint<CR>
@@ -804,6 +809,14 @@ nmap <leader>tab :set noexpandtab tabstop=10<cr>
 
 "[VIMMATLAB]
 " let g:matlab_server_launcher = 'tmux' "launch the server in a tmux split
+" INDENTLINE - | ¦ ┆ │
+let g:indentline_char = '|'
+highlight Conceal cterm=NONE ctermfg=239 ctermbg=NONE
+highlight Conceal gui=NONE guifg=#3B4048 guibg=NONE
+
+nmap <leader>q f$cf}
+imap <leader>q <esc>f$cf}
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Local Settings

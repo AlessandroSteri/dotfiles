@@ -19,6 +19,7 @@
   untrack = rm --cached
   unstage = reset
   remoteurl = config --get remote.origin.url
+  dr = diff remotes/origin/HEAD
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input

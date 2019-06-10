@@ -32,14 +32,17 @@ alias h='hostname'
 
 #alias for common dotfiles
 alias cddot='cd ~/.dotfiles'
-alias vimrc='vim ~/.vimrc'
-alias vimrcb='vim ~/.vimrc.bundles'
-alias zshrc='vim ~/.zshrc'
-alias tmuxconf='vim ~/.tmux.conf'
-alias altvim='vim -u ~/Desktop/BACKUP\ VIMRC/vimrc'
-alias aliases='vim ~/.aliases'
-alias sshconf='vim ~/.ssh/config'
+alias vimrc='nvim ~/.vimrc'
+alias vimrcb='nvim ~/.vimrc.bundles'
+alias zshrc='nvim ~/.zshrc'
+alias tmuxconf='nvim ~/.tmux.conf'
+alias altvim='nvim -u ~/Desktop/BACKUP\ VIMRC/vimrc'
+alias aliases='nvim ~/.aliases'
+alias sshconf='nvim ~/.ssh/config'
 
+# don't mess with rm, use trash instead
+alias rm="echo Use 'del' or 'trash', or the full path i.e. '/bin/rm'"
+alias trash="rmtrash"
 
 # Tmux
 # alias ta='tmux attach'
@@ -79,10 +82,13 @@ alias v="nvim -p"
 #open vim read only
 alias vr="vim -R"
 
-alias V="sudo vim -p"
+alias V="sudo nvim -p"
 
 #shortcut for latex
 alias vv="vim -p content.tex"
+
+# non invasive space vim
+alias svim='vim -u ~/.SpaceVim/vimrc'
 
 #sublime txt from shell
 alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl --new-window $@'

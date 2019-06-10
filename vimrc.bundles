@@ -72,8 +72,8 @@ Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jgdavey/tslime.vim'
 " Plugin 'henrik/vim-qargs'
-Plug 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax'
+" Plug 'pangloss/vim-javascript'
+" Plug 'jelera/vim-javascript-syntax'
 Plug 'jsx/jsx.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'avdgaag/vim-phoenix'
@@ -81,14 +81,14 @@ Plug 'vim-scripts/PatternsOnText'
 Plug 'yegappan/mru'
 Plug 'lervag/vimtex'
 " Plug 'maralla/completor.vim'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-unimpaired'
 Plug 'mhinz/vim-startify'
 " Plugin 'xuhdev/vim-latex-live-preview'
 " Plugin 'vim-scripts/Conque-GDB' "gdb debugger for vim
 "Plugin 'scrooloose/nerdcommenter' "comments
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 " Plugin 'nvie/vim-flake8'
 " Plugin 'chrisbra/csv.vim'
 Plug 'junegunn/goyo.vim'
@@ -102,6 +102,7 @@ Plug 'jiangmiao/auto-pairs'
 " Plug 'klen/python-mode'
 
 " Plug 'python-mode/python-mode', { 'branch': 'develop'  }
+Plug 'connorholyday/vim-snazzy'
 
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -111,6 +112,7 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
 
 let g:LanguageClient_serverCommands = {
     \ 'python': ['/usr/local/bin/pyls'],
+    \ 'sh': ['bash-language-server', 'start'],
     \ }
 
 if has('nvim')
@@ -121,7 +123,13 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
-
+" fixes auto insertion
+ let g:jedi#completions_enabled = 0
+ let g:jedi#auto_vim_configuration = 0
+ let g:jedi#smart_auto_mappings = 0
+ let g:jedi#show_call_signatures = 0
+nnoremap <buffer> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <buffer> K :call LanguageClient#textDocument_hover()<CR>
 " Plug 'davidhalter/jedi-vim'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
@@ -155,13 +163,22 @@ Plug 'chrisbra/csv.vim'
 
 Plug 'jpalardy/vim-slime'
 
+" indent line
+Plug 'sbdchd/indentline.vim'
+" Folding
+" Plug 'tmhedberg/SimpylFold'
+Plug 'tomasr/molokai'
+
+" Plug 'hdima/python-syntax'
+" let python_highlight_all = 1
+
 " " Matlab
 " Plug 'raingo/vim-matlab'
 
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
-Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') }
+" function! DoRemote(arg)
+"   UpdateRemotePlugins
+" endfunction
+" Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') }
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
