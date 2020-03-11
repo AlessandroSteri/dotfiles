@@ -120,6 +120,7 @@ alias cdd="cd ~/Desktop"
 
 alias :w="echo this isn\'t vim!"
 alias :q='exit'
+alias qq='exit'
 
 
 #SCREEN: for vim - REPL integration using vim-slime

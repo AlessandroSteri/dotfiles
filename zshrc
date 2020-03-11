@@ -21,8 +21,8 @@ if [[ -n $SSH_CONNECTION ]]; then
   export USER=``
   # export HOST=``
 else
-  # ZSH_THEME="powerlevel9k/powerlevel9k"
-  ZSH_THEME=""
+  ZSH_THEME="powerlevel9k/powerlevel9k"
+  # ZSH_THEME=""
   DEFAULT_USER=$(whoami)
 fi
 
