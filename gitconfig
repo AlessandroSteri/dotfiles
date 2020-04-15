@@ -16,7 +16,7 @@
   up = !git fetch origin && git rebase origin/master
   undo = reset HEAD~
   pom = push origin master
-  untrack = rm --cached
+  untrack = rm --cached # the file will be no longer under versioning control but remains on file system
   unstage = reset
   remoteurl = config --get remote.origin.url
   dr = diff remotes/origin/HEAD
@@ -32,8 +32,8 @@
 [commit]
 	template = ~/.gitmessage
 [user]
-	name = Alessandro
-	email = steri.1356261@studenti.uniroma1.it
+	name = Alessandro Steri
+	email = alessandro.steri@gmail.com
 	username = AlessandroSteri
 [diff]
     tool = vimdiff
