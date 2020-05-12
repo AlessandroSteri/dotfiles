@@ -1,7 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sections:
 "    => go to Section
-"    -> Vundle, Plugins
+"    -> Vimrcb: Plugins
 "    -> General
 "    -> Vim UI/UX 
 "    -> Search and Replace
@@ -25,7 +25,7 @@
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vundle, Plugins
+" => Vimrcb: Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
@@ -65,7 +65,7 @@ set splitbelow
 set splitright
 
 " Fast saving
-nmap <leader>w :w!<cr>
+" nmap <leader>w :w!<cr>
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
@@ -76,7 +76,7 @@ set number                      " Show current line number
 set numberwidth=5
 "set relativenumber             " Show relative line numbers
 
-" Switch to relative numbering with ease
+" Switch to relative numbering with ease ^n
 function! NumberToggle()
   if(&rnu == 1)
     set nornu
@@ -94,13 +94,14 @@ augroup myvimrc
 augroup END
 
 set list
-set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
+set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵,precedes:«,extends:»
 " set nolist
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim UI/UX 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
-" set scrolloff=7
+set scrolloff=7
 
 " " Avoid garbled characters in Chinese language windows OS
 " let $LANG='en'
@@ -211,9 +212,9 @@ try
     let g:solarized_termtrans = 1
     " colorscheme solarized
     " colorscheme vim-wwdc16-theme
-    colorscheme solarized8
+    " colorscheme solarized8
     " let g:gruvbox_contrast_dark = "soft"
-    " colorscheme gruvbox
+    colorscheme gruvbox
     " colorscheme molokai
     " let g:molokai_original = 1
     " colorscheme snazzy
@@ -380,9 +381,9 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
-" let g:airline_theme='gruvbox'
+let g:airline_theme='gruvbox'
 " let g:airline_theme='solarized'
-let g:airline_theme='dracula'
+" let g:airline_theme='dracula'
 "
 " Don't counts whitespsces as errors
 let g:airline#extensions#whitespace#enabled = 0
@@ -817,6 +818,8 @@ highlight Conceal gui=NONE guifg=#3B4048 guibg=NONE
 nmap <leader>q f$cf}
 imap <leader>q <esc>f$cf}
 
+" VIM-WHICH-KEY
+nnoremap <silent> <leader> :WhichKey ','<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Local Settings

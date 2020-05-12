@@ -44,6 +44,8 @@ Plug 'sjl/vitality.vim'
 Plug 'kien/ctrlp.vim'
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run install script
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
 " Plugin 'janko-m/vim-test'
 " Plugin 'tpope/vim-bundler'
 " Plugin 'ecomba/vim-ruby-refactoring'
@@ -117,8 +119,10 @@ let g:LanguageClient_serverCommands = {
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'zchee/deoplete-jedi'
 else
   Plug 'Shougo/deoplete.nvim'
+  Plug 'zchee/deoplete-jedi'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
@@ -146,8 +150,11 @@ Plug 'jaxbot/semantic-highlight.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'vitalk/vim-simple-todo', { 'for': 'text' }
 Plug 'christoomey/vim-titlecase'
-" Plug 'SirVer/ultisnips'
+
+" snippets
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+
 Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'
 Plug 'vim-scripts/vim-auto-save', { 'for': 'tex' }
@@ -179,6 +186,38 @@ Plug 'tomasr/molokai'
 "   UpdateRemotePlugins
 " endfunction
 " Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') }
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+
+function MyCustomHighlights()
+    hi semshiLocal           ctermfg=209 guifg=#ff875f
+    hi semshiGlobal          ctermfg=172 guifg=#ffaf00
+    hi semshiImported        ctermfg=214 guifg=#ffaf00   cterm=bold  gui=bold
+    hi semshiParameter       ctermfg=117  guifg=#5fafff
+    hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
+    hi semshiFree            ctermfg=218 guifg=#ffafd7
+    hi semshiBuiltin         ctermfg=108  guifg=#8ec07c  cterm=bold  gui=bold
+    hi semshiAttribute       ctermfg=117  guifg=#00ffaf  cterm=bold gui=bold 
+    hi semshiSelf            ctermfg=246  guifg=#b2b2b2  cterm=bold gui=bold 
+    hi semshiUnresolved      ctermfg=124 guifg=#ffff00 cterm=underline gui=underline
+    " hi semshiSelected        ctermfg=235 guifg=#ffffff ctermbg=223 guibg=#d7005f
+    hi semshiSelected        ctermfg=223 guifg=#ffffff ctermbg=235 guibg=#d7005f cterm=bold
+
+    hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+    hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+    sign define semshiError text=E> texthl=semshiErrorSign
+endfunction
+autocmd FileType python call MyCustomHighlights()
+autocmd ColorScheme * call MyCustomHighlights()
+
+" highlight Cursorline 52
+
+    " hi semshiSelected        ctermfg=246 guifg=#ffffff ctermbg=237 guibg=#d7005f
+
+Plug 'liuchengxu/vim-which-key'
+" set timeoutlen=5
+
+nnoremap <silent> <leader> :WhichKey ','<CR>
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
