@@ -685,11 +685,11 @@ nmap <silent> <leader>as :Startify<CR>
 let g:startify_session_dir = expand("~/.vim") . "/sessions/"
 let g:session_autosave = 'no'
 
-" [vim-session]
-map <Leader>ss :SaveSession
-map <Leader>os :OpenSession
-map <Leader>cs :CloseSession
-map <Leader>ds :DeleteSession
+" " [vim-session] never used in long time
+" map <Leader>ss :SaveSession
+" map <Leader>os :OpenSession
+" map <Leader>cs :CloseSession
+" map <Leader>ds :DeleteSession
 
 " " [completor]
 " let g:completor_python_binary = '/usr/local/lib/python2.7/site-packages/jedi'

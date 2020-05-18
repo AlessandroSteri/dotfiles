@@ -1,10 +1,10 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sections:
 "    => go to Section
-"    -> Vundle, Header
-"    -> Vundle, Plugins
+"    -> Plug, Header
+"    -> Plug, Plugins
 "    -> Source Local Plugins
-"    -> Vundle, Footer
+"    -> Plug, Footer
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Automatic installation of plug
@@ -15,97 +15,132 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vundle, Header
+" => Plug, Header
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set nocompatible              " be iMproved, required
-" filetype off                  " required
 call plug#begin('~/.vim/bundle')
-" set the runtime path to include Vundle and initialize
-" set rtp+=~/.vim/bundle/Vundle.vim
-" call vundle#begin()
-
-" let Vundle manage Vundle, required
-" Plugin 'VundleVim/Vundle.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vundle, Plugins
+" => Plug, Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Define bundles via Github repos
-
+" Universal set of vim defaults
 Plug 'tpope/vim-sensible'
+" Git vim integration
 Plug 'tpope/vim-fugitive'
+" git diffs sing, previous changes: [c next changes: ]c
+Plug 'airblade/vim-gitgutter'
+" repeat stuff with . 
 Plug 'tpope/vim-repeat'
-" Plugin 'tpope/vim-projectionist'
-" Plugin 'mustache/vim-mustache-handlebars'
-Plug 'blarghmatey/split-expander'
-" Plugin 'ngmy/vim-rubocop'
-" Plugin 'rking/ag.vim'
+" makes (V)im play nicely with (i)Term 2 and (t)mux
 Plug 'sjl/vitality.vim'
-Plug 'kien/ctrlp.vim'
-" PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run install script
+
+" Active fork of ctrlp 
+Plug 'ctrlpvim/ctrlp.vim'
+"   CTRLP TOLEARN: 
+" Press <c-f> and <c-b> to cycle between modes.
+" Use <c-t> or <c-v>, <c-x> to open the selected entry in a new tab or in a new split.
+" Use <c-z> to mark/unmark multiple files and <c-o> to open them.
+
+" fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" Plugin 'janko-m/vim-test'
-" Plugin 'tpope/vim-bundler'
-" Plugin 'ecomba/vim-ruby-refactoring'
-" Plugin 'airblade/vim-gitgutter'
+" Plug 'janko-m/vim-test'
+
+
+" airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plugin 'bling/vim-bufferline'
+
+" helps to end certain structures automatically e.g. if .... end
 Plug 'tpope/vim-endwise'
+
+" surroundings: parentheses, brackets, quotes, tags..
 Plug 'tpope/vim-surround'
-" Plugin 'tmhedberg/matchit'
-" Plugin 'kana/vim-textobj-user'
-" Plugin 'nelstrom/vim-textobj-rubyblock'
+
+" extends % to latex etc
+" Plug 'tmhedberg/matchit'
+
+" Comment with gcc or gc{motion}
 Plug 'vim-scripts/tComment'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plugin 'MarcWeber/vim-addon-mw-utils'
-" Plugin 'tomtom/tlib_vim'
+
+Plug 'preservim/nerdtree'
+
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" search and replace across many files.
 Plug 'skwp/greplace.vim'
-" Plugin 'vim-ruby/vim-ruby'
-" Plugin 'elixir-lang/vim-elixir'
+
 " Plug 'scrooloose/syntastic'
-" Plugin 'tpope/vim-haml'
-"Plugin 'dkprice/vim-easygre'
-" Plugin 'tpope/vim-rails'
+
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
-" Plugin 'myusuf3/numbers.vim'
+
+" move between Vim panes and tmux splits wit ^hjkl\
 Plug 'christoomey/vim-tmux-navigator'
+
+"  send portion of text from a vim buffer to a running tmux session
 Plug 'jgdavey/tslime.vim'
-" Plugin 'henrik/vim-qargs'
-" Plug 'pangloss/vim-javascript'
-" Plug 'jelera/vim-javascript-syntax'
-Plug 'jsx/jsx.vim'
-Plug 'terryma/vim-expand-region'
-Plug 'avdgaag/vim-phoenix'
-Plug 'vim-scripts/PatternsOnText'
+Plug 'jpalardy/vim-slime'
+
+
+
+" Plug 'avdgaag/vim-phoenix'
+" Plug 'vim-scripts/PatternsOnText'
+
+"  easy access to a list of recently opened/edited files in Vim
 Plug 'yegappan/mru'
+
+" Latex
 Plug 'lervag/vimtex'
+
+" Other completer
 " Plug 'maralla/completor.vim'
 " Plug 'w0rp/ale'
+
+" side bar for exuberant ctags
 Plug 'majutsushi/tagbar'
+
 Plug 'tpope/vim-unimpaired'
+
+" Vim start screen
 Plug 'mhinz/vim-startify'
-" Plugin 'xuhdev/vim-latex-live-preview'
-" Plugin 'vim-scripts/Conque-GDB' "gdb debugger for vim
-"Plugin 'scrooloose/nerdcommenter' "comments
+
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
-" Plugin 'nvie/vim-flake8'
-" Plugin 'chrisbra/csv.vim'
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+
+
+" runs the currently open file through Flake8
+" Plug 'nvie/vim-flake8'
+
+" Easy visualize csv files
+Plug 'chrisbra/csv.vim'
+
+" Distraction-free writing.
 Plug 'junegunn/goyo.vim'
+" Hyperfocus-writing, shadows non current lines
+Plug 'junegunn/limelight.vim'
+
+" visualizes branched undo history
 Plug 'mbbill/undotree'
+
+" mclab plist syntax highlight
 Plug 'https://alessandrosteri@bitbucket.org/mclab/vim-properties-syntax.git'
-" Bundle 'mattn/webapi-vim'
-" Bundle 'mattn/gist-vim'
+
+" make gist in vim
+" Plug 'mattn/gist-vim'
+
+" Insert or delete brackets, parens, quotes in pair.
 Plug 'jiangmiao/auto-pairs'
-" Plug 'tell-k/vim-autopep8' " seems to work only with python 2.7
+
+" search selections with * and # --> implemented in vimrc
 " Plugin 'nelstrom/vim-visual-star-search'
+
+" Python linters
 " Plug 'klen/python-mode'
-
 " Plug 'python-mode/python-mode', { 'branch': 'develop'  }
-Plug 'connorholyday/vim-snazzy'
 
+
+
+" Language Server Protocol (vim and neovim)
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -126,55 +161,98 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
 let g:deoplete#enable_at_startup = 1
 " fixes auto insertion
- let g:jedi#completions_enabled = 0
- let g:jedi#auto_vim_configuration = 0
- let g:jedi#smart_auto_mappings = 0
- let g:jedi#show_call_signatures = 0
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#show_call_signatures = 0
+
 nnoremap <buffer> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <buffer> K :call LanguageClient#textDocument_hover()<CR>
+
 " Plug 'davidhalter/jedi-vim'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
+
+" vim sessions 
+" Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-session'
+
+" Prety tabline
 Plug 'mkitt/tabline.vim'
-" Plugin 'flazz/vim-colorschemes'
+
+" ColorScheme-Themes
+Plug 'connorholyday/vim-snazzy'
 Plug 'lifepillar/vim-solarized8'
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
-" Plug 'thoughtstream/Damian-Conway-s-Vim-Setup'
+Plug 'tomasr/molokai'
+Plug 'lifepillar/vim-wwdc16-theme'
+
+
+" Navigation {{{
+" ,,{motion} to move fast
 Plug 'easymotion/vim-easymotion'
-Plug 'junegunn/limelight.vim'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+" f{char},F{char},t{char},T{char} on first char that moves you on a given word
+Plug 'unblevable/quick-scope'
+" Trigger a highlight in the appropriate direction only when pressing these keys:
+" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+highlight QuickScopePrimary guifg='#00C7DF' gui=underline ctermfg=155 cterm=underline
+highlight QuickScopeSecondary guifg='#eF5F70' gui=underline ctermfg=81 cterm=underline
+
+let g:qs_max_chars=150
+
+" }}}
+
+" ,sh to sematic highlight
 Plug 'jaxbot/semantic-highlight.vim'
-Plug 'airblade/vim-gitgutter'
+
+
+" vim todoes
 Plug 'vitalk/vim-simple-todo', { 'for': 'text' }
+
+" gt{motion} to titlecase, gT all line
 Plug 'christoomey/vim-titlecase'
 
 " snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+" use <Tab> for all your insert completion needs
 Plug 'ervandew/supertab'
+
+" alignment ga{motion}*.. 
 Plug 'junegunn/vim-easy-align'
+
+" autosave tex file for fast preview
 Plug 'vim-scripts/vim-auto-save', { 'for': 'tex' }
+
+
+" select increasingly larger regions: + to expand and _ to shrink it. 
+Plug 'terryma/vim-expand-region'
+" incremental selection with v v v v ...
 Plug 'gorkunov/smartpairs.vim'
+
+" integrates Python documentation system into Vim
 Plug 'fs111/pydoc.vim'
+
+" Toggle booleans
 " Plug 'sagarrakshe/toggle-bool'
-Plug 'mindriot101/vim-yapf', { 'for': 'python' }
-Plug 'lifepillar/vim-wwdc16-theme'
+
+" Plug 'mindriot101/vim-yapf', { 'for': 'python' }
+
 " Plug 'wilywampa/vim-ipython'
 " Plug 'ivanov/vim-ipython'
-Plug 'brooth/far.vim'
-Plug 'chrisbra/csv.vim'
 
-Plug 'jpalardy/vim-slime'
+" find and replace
+Plug 'brooth/far.vim'
 
 " indent line
 Plug 'sbdchd/indentline.vim'
-" Folding
+
+" Folding for Python
 " Plug 'tmhedberg/SimpylFold'
-Plug 'tomasr/molokai'
 
 " Plug 'hdima/python-syntax'
 " let python_highlight_all = 1
@@ -186,6 +264,8 @@ Plug 'tomasr/molokai'
 "   UpdateRemotePlugins
 " endfunction
 " Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') }
+
+" Semantic Highlighting for Python in Neovim
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 function MyCustomHighlights()
@@ -213,11 +293,12 @@ autocmd ColorScheme * call MyCustomHighlights()
 
     " hi semshiSelected        ctermfg=246 guifg=#ffffff ctermbg=237 guibg=#d7005f
 
+" displays available keybindings in popup
 Plug 'liuchengxu/vim-which-key'
 " set timeoutlen=5
 
 nnoremap <silent> <leader> :WhichKey ','<CR>
-
+" TODO: add more
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -229,8 +310,6 @@ if filereadable(expand("~/.vimrc.bundles.local"))
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vundle, Footer
+" => Plug, Footer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" call vundle#end()            " required
-" filetype plugin indent on    " required
 call plug#end()
