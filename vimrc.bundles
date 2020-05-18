@@ -196,7 +196,7 @@ Plug 'easymotion/vim-easymotion'
 " f{char},F{char},t{char},T{char} on first char that moves you on a given word
 Plug 'unblevable/quick-scope'
 " Trigger a highlight in the appropriate direction only when pressing these keys:
-" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 highlight QuickScopePrimary guifg='#00C7DF' gui=underline ctermfg=155 cterm=underline
 highlight QuickScopeSecondary guifg='#eF5F70' gui=underline ctermfg=81 cterm=underline
@@ -292,14 +292,46 @@ autocmd ColorScheme * call MyCustomHighlights()
 " highlight Cursorline 52
 
     " hi semshiSelected        ctermfg=246 guifg=#ffffff ctermbg=237 guibg=#d7005f
+    
+" floating terminal in vim
+Plug 'voldikss/vim-floaterm'
+
 
 " displays available keybindings in popup
 Plug 'liuchengxu/vim-which-key'
 " set timeoutlen=5
 
+" WhichKey: menu for leader mappings {{{
 nnoremap <silent> <leader> :WhichKey ','<CR>
-" TODO: add more
+nnoremap <silent> ` :WhichKey '`'<CR>
 
+" Create map to add keys to
+let g:which_key_map =  {}
+" Define a separator
+let g:which_key_sep = '→'
+" set timeoutlen=100
+
+let g:which_key_map['/'] = [ '<Plug>NERDCommenterToggle'  , 'comment' ]
+
+
+" Not a fan of floating windows for this
+let g:which_key_use_floating_win = 0
+" Change the colors if you want
+" highlight default link WhichKey          Operator
+" highlight default link WhichKeySeperator DiffAdded
+" highlight default link WhichKeyGroup     Identifier
+" highlight default link WhichKeyDesc      Function
+
+" Hide status line
+autocmd! FileType which_key
+autocmd  FileType which_key set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+
+
+let g:which_key_map.g = { 'name' : '+git' }
+
+
+" }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Local Plugins

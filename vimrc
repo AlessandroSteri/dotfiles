@@ -49,7 +49,7 @@ set autoread
 " like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
-let maplocalleader = ","
+let maplocalleader = "`"
 
 " Allow to use mouse on vim
 if has('mouse')
@@ -818,7 +818,7 @@ highlight Conceal gui=NONE guifg=#3B4048 guibg=NONE
 nmap <leader>q f$cf}
 imap <leader>q <esc>f$cf}
 
-" VIM-WHICH-KEY
+" VIM-WHICH-KEY -> i think needs to be here cause if not is overvritten by leader map
 nnoremap <silent> <leader> :WhichKey ','<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
