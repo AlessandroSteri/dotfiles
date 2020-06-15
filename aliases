@@ -45,6 +45,7 @@ alias rm="echo Use 'del' or 'trash', or the full path i.e. '/bin/rm'"
 alias trash="rmtrash"
 
 # Tmux
+alias tmux='tmux -u' # enforce unicode (default is ascii) for special characters
 # alias ta='tmux attach'
 alias ta='tmux attach-session -t main || tmux new-session -s main'
 alias td='tmux detach'

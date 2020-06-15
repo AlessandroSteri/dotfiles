@@ -103,6 +103,29 @@ Plug 'tpope/vim-unimpaired'
 
 " Vim start screen
 Plug 'mhinz/vim-startify'
+" returns all modified files of the current git repo
+" `2>/dev/null` makes the command fail quietly, so that when we are not
+" in a git repo, the list will be empty
+function! s:gitModified()
+    let files = systemlist('git ls-files -m 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
+
+" same as above, but show untracked files, honouring .gitignore
+function! s:gitUntracked()
+    let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
+
+let g:startify_lists = [
+        \ { 'type': 'files',     'header': ['   MRU']            },
+        \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+        \ { 'type': 'sessions',  'header': ['   Sessions']       },
+        \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+        \ { 'type': function('s:gitModified'),  'header': ['   Git Modified']},
+        \ { 'type': function('s:gitUntracked'), 'header': ['   Git Untracked']},
+        \ { 'type': 'commands',  'header': ['   Commands']       },
+        \ ]
 
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
@@ -145,7 +168,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-set runtimepath+=~/.vim-plugins/LanguageClient-neovim
+set runtimepath+=~/.vim/bundle/LanguageClient-neovim
 
 let g:LanguageClient_serverCommands = {
     \ 'python': ['/usr/local/bin/pyls'],
@@ -153,11 +176,11 @@ let g:LanguageClient_serverCommands = {
     \ }
 
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'zchee/deoplete-jedi'
+  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  " Plug 'zchee/deoplete-jedi'
 else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'zchee/deoplete-jedi'
+  " Plug 'Shougo/deoplete.nvim'
+  " Plug 'zchee/deoplete-jedi'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
@@ -188,6 +211,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
 Plug 'lifepillar/vim-wwdc16-theme'
+Plug 'arcticicestudio/nord-vim'
 
 
 " Navigation {{{
@@ -265,6 +289,8 @@ Plug 'sbdchd/indentline.vim'
 " endfunction
 " Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') }
 
+" show hexadecimal colors
+Plug 'chrisbra/Colorizer'
 " Semantic Highlighting for Python in Neovim
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
@@ -305,6 +331,11 @@ Plug 'liuchengxu/vim-which-key'
 nnoremap <silent> <leader> :WhichKey ','<CR>
 nnoremap <silent> ` :WhichKey '`'<CR>
 
+nnoremap <silent> `t :FloatermNew --wintype=popup --height=6<CR> 
+
+nnoremap<silent> `p :FloatermNew ipython<CR>
+nnoremap<silent> `g :FloatermNew lazygit<CR>
+
 " Create map to add keys to
 let g:which_key_map =  {}
 " Define a separator
@@ -329,11 +360,90 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 
 
 let g:which_key_map.g = { 'name' : '+git' }
-
-
 " }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Stable version of coc
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" :CocInstall coc-json coc-python coc-snippets coc-vimlsp coc-sourcekit coc-spell-checker 
+"
+"
+" Kite settings:
+" support also go
+let g:kite_supported_languages = ['python', 'go']
+" let g:kite_tab_complete=1
+set completeopt+=menuone   " show the popup menu even when there is only 1 match
+set completeopt+=noinsert  " don't insert any text until user chooses a match
+set completeopt-=longest   " don't insert the longest common text
+set completeopt+=preview
+autocmd CompleteDone * if !pumvisible() | pclose | endif
+set belloff+=ctrlg  " if vim beeps during completion
+" let g:kite_previous_placeholder = '<C-J>'
+" let g:kite_next_placeholder = '<C-K>'
+" let g:kite_documentation_continual=1
+" let g:kite_log=1
+
+
+" Move to metakirby5 when virrual text fork is enabled
+Plug 'ChristianChiarulli/codi.vim'
+" Plug 'metakirby5/codi.vim'
+" " Change the color
+highlight CodiVirtualText guifg=green
+
+let g:codi#virtual_text_prefix = "❯ "
+
+
+"
+let g:codi#aliases = {
+                   \ 'javascript.jsx': 'javascript',
+                   \ }
+
+" Plug 'danielfalbo/vim-cute'
+
+
+
+" Search for terms using  Dash.app, :Dash[!] [TERM] [KEYWORD]
+" settings: https://raw.githubusercontent.com/rizzatti/dash.vim/master/doc/dash.txt
+" This plugin provides helpful mappings for common use cases.
+"
+" <Plug>DashSearch            Searches for the |word| under the cursor,
+"                               considering the current keyword setup for
+"                               docset lookup.
+"
+" <Plug>DashGlobalSearch      Searches for the |word| under the cursor in all
+"                               docsets.
+"
+" For example, add this to your |.vimrc|:
+"     >
+"     :nmap <silent> <leader>d <Plug>DashSearch
+" <
+"     Note: Using |:noremap| will not work with <Plug> mappings.
+Plug 'rizzatti/dash.vim'
+" nmap <silent> <leader>i <Plug>DashSearch
+" nmap <leader>i Dash
+" coc-yank
+" nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
+" TODO: move maps before wim which key!!!!!!!!!!!!!
+" Leetcode
+Plug 'ianding1/leetcode.vim'
+let g:leetcode_browser = 'chrome'
+let g:leetcode_solution_filetype = 'python3'
+" nnoremap <leader>ll :LeetCodeList<cr>
+" nnoremap <leader>lt :LeetCodeTest<cr>
+" nnoremap <leader>ls :LeetCodeSubmit<cr>
+" nnoremap <leader>li :LeetCodeSignIn<cr>
+
+" RANGER
+Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+" Make Ranger replace netrw and be the file explorer
+let g:rnvimr_ex_enable = 1
+
+nmap <space>r :RnvimrToggle<CR>
+
+" You may need to run this
+" :RnvimrSync
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Local Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Allow for local Vundle bundles

@@ -218,6 +218,7 @@ try
     " colorscheme molokai
     " let g:molokai_original = 1
     " colorscheme snazzy
+    " colorscheme nord
 catch
 endtry
 
@@ -372,8 +373,6 @@ set laststatus=2
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-" Format the status line, alaso with paste on/off (HasPaste defined in section Helper Funtions)
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
 " Airline
 let g:airline_powerline_fonts = 1
@@ -382,6 +381,7 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.space = "\ua0"
 let g:airline_theme='gruvbox'
+" let g:airline_theme='nord'
 " let g:airline_theme='solarized'
 " let g:airline_theme='dracula'
 "
@@ -391,22 +391,25 @@ let g:airline#extensions#whitespace#enabled = 0
 " let g:airline#extensions#branch#enabled = 1
 
 " Enable w0rp/ale extension for airline
-let g:airline#extensions#ale#enabled = 1
+" let g:airline#extensions#ale#enabled = 1
 
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
+" function! LinterStatus() abort
+"     let l:counts = ale#statusline#Count(bufnr(''))
+"
+"     let l:all_errors = l:counts.error + l:counts.style_error
+"     let l:all_non_errors = l:counts.total - l:all_errors
+"
+"     return l:counts.total == 0 ? 'OK' : printf(
+"     \   '%dW %dE',
+"     \   all_non_errors,
+"     \   all_errors
+"     \)
+" endfunction
+"
+" set statusline=%{LinterStatus()}
 
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-
-    return l:counts.total == 0 ? 'OK' : printf(
-    \   '%dW %dE',
-    \   all_non_errors,
-    \   all_errors
-    \)
-endfunction
-
-set statusline=%{LinterStatus()}
+" Format the status line, alaso with paste on/off (HasPaste defined in section Helper Funtions)
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
 " use tabline from airline - currently i use a specific plugin
 " let g:airline#extensions#tabline#enabled = 1
@@ -820,6 +823,8 @@ imap <leader>q <esc>f$cf}
 
 " VIM-WHICH-KEY -> i think needs to be here cause if not is overvritten by leader map
 nnoremap <silent> <leader> :WhichKey ','<CR>
+
+nmap a A
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Local Settings
