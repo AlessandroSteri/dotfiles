@@ -7,11 +7,14 @@ fi
 
 # disable warnings from zsh producing i/o
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation
 export ZSH=$HOME/.oh-my-zsh
+
+export PATH=$PATH":/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin"
 
 export PATH=$PATH":$HOME/.dotfiles/utils/custom_commands"
 

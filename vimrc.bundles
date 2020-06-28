@@ -439,6 +439,8 @@ let g:rnvimr_ex_enable = 1
 
 nmap <space>r :RnvimrToggle<CR>
 
+
+Plug 'keith/swift.vim'
 " You may need to run this
 " :RnvimrSync
 
